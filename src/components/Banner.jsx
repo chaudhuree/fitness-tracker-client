@@ -1,11 +1,12 @@
 import header from "/header.png";
 import { useNavigate } from "react-router-dom";
 
+
 export default function Banner() {
   const navigate = useNavigate()
   return (
     <>
-      <div className="grid grid-cols-12 font-poppins min-h-screen items-center relative header__container ">
+      <div className="grid  grid-cols-12 font-poppins min-h-screen items-center relative header__container ">
       <span className="bg__blur"></span>
       <span className="bg__blur bottom__blur"></span>
         <div className="col-span-12 md:col-span-6">
@@ -19,7 +20,7 @@ export default function Banner() {
             now and witness the incredible transformation your body is capable
             of!
           </p>
-          <button onClick={()=>navigate('/classes')} className="px-2 py-2 md:py-4 md:px-8 delay-100 text-sm md:text-base font-medium  bg-orange-400  md:bg-ornage hover:font-medium   hover:bg-orange-400 text-primary rounded-[5px]">JOIN US</button>
+          <button onClick={()=>navigate('/classes')} className="transition-item px-2  py-2 md:py-4 md:px-8 delay-[0.3s] ease-in-out text-sm md:text-base font-medium  bg-orange-400  md:bg-ornage hover:font-medium   hover:bg-orange-400 text-primary rounded-[5px]">JOIN US</button>
         </div>
         <div className="col-span-12 md:col-span-6 grid justify-center items-center">
           <figure className="header__image max-w-[350px] m-auto relative">

@@ -10,7 +10,6 @@ html,
 body {
   max-width: 100%;
   overflow-x: hidden;
-  
 }
 .dark body {
   @apply bg-gray-900; /* Dark mode styles */
@@ -48,11 +47,10 @@ body {
         <span class="bg__blur header__blur"></span> */
 /* banner */
 
-
 .header_span {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px #ffffff;
 }
-
-
-
+.transition-item{
+  transition: 0.3s;
+}

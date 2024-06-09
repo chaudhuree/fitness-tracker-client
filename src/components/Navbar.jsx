@@ -127,7 +127,7 @@ export default function Navbar() {
                 </Link>
                 <button
                   onClick={logoutHandler}
-                  className="px-2 py-2 md:py-4 md:px-8 delay-100 text-sm md:text-base font-medium  bg-orange-400  md:bg-ornage hover:font-medium   hover:bg-orange-400 text-primary rounded-[5px]max-md:hidden"
+                  className="transition-item px-2 py-2 md:py-4 md:px-8 delay-100 text-sm md:text-base font-medium  bg-orange-400  md:bg-ornage hover:font-medium   hover:bg-orange-400 text-primary rounded-[5px]max-md:hidden"
                 >
                   Logout
                 </button>
@@ -144,7 +144,7 @@ export default function Navbar() {
             */}
             <NavLink
               to="/signin"
-              className={`px-2 py-2 md:py-4 md:px-8 delay-100 text-sm md:text-base font-medium  bg-orange-400  md:bg-ornage hover:font-medium   hover:bg-orange-400 text-primary rounded-[5px]   `}
+              className={`transition-item px-2 py-2 md:py-4 md:px-8 delay-100 text-sm md:text-base font-medium  bg-orange-400  md:bg-ornage hover:font-medium   hover:bg-orange-400 text-primary rounded-[5px]   `}
             >
               Login
             </NavLink>
