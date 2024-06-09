@@ -1,16 +1,30 @@
-import {useEffect} from 'react'
-import notFound from '/notfound.svg'
-import { Link } from 'react-router-dom'
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function NotFound() {
   useEffect(() => {
-    document.title = 'Not Found '
-  }, [])
+    document.title = "Not Found ";
+  }, []);
 
   return (
-    <div className='h-dvh  w-full grid place-items-center mt-5'>
-      <img src={notFound} alt="not found" className='object-cover w-1/2 h-3/4'/>
-      <Link to="/" className='text-[40px] max-md:text-[30px] font-semibold font-poppins text-sky-600'>Go To Home</Link>
+    <div className="relative">
+    <span className="bg__blur"></span>
+    <span className="bg__blur bottom__blur"></span>
+    <div className="min-h-screen  w-full flex flex-col justify-center items-center  ">
+    
+      <h1 className="text-white font-poppins text-center font-bold text-[72px]">
+        404
+      </h1>
+      <p className="text-white text-center font-poppins font-normal text-[20px]">
+        Sorry, we were unable to find that page
+      </p>
+      <Link
+        to="/"
+        className="cursor-pointer text-lg font-poppins text-orange-400 mt-4 hover:text-orange-500 transition-all ease-in-out duration-200"
+      >
+        Go To Home
+      </Link>
     </div>
-  )
+    </div>
+  );
 }

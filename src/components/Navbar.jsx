@@ -1,10 +1,9 @@
 import { NavLink, useLocation, useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
-// import DarkModeToggler from "./DarkModeToggler";
 import { routeLists } from "../utils";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
-import axiosSecure from "../hooks/useAxiosHook";
+import {deleteUserDataFromLocalStorage} from "../utils";
 
 export default function Navbar() {
   const { logout, currentUser } = useAuth();
@@ -12,7 +11,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const logoutHandler = async () => {
     logout();
-    // await axiosSecure.get("/auth/logout");
+    deleteUserDataFromLocalStorage();
     navigate("/");
   };
   function pathMatchRoute(route) {
@@ -47,29 +46,23 @@ export default function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52"
           >
             {routeLists?.map((route) => (
               <li key={route.path}>
-                <NavLink
+                <Link
                   to={route.path}
-                  className={` flex items-center justify-center mb-2  ${
-                    !currentUser &&
-                    (route.path === "/addjob" ||
-                      route.path === "/myjobs" ||
-                      route.path === "/appliedjobs") &&
-                    "hidden"
-                  }`}
+                  className={`${pathMatchRoute(route.path) && "text-orange-500 font-medium"} flex items-center justify-center mb-2 transition-all hover:text-orange-400 duration-200`}
                 >
                   {route.routeName}
-                </NavLink>
+                </Link>
               </li>
             ))}
             {currentUser ? (
               <li>
                 <button
                   onClick={logoutHandler}
-                  className="w-full py-2 px-[13px] bg-primary text-white rounded-[8px] font-semibold text-base flext justify-center mt-3"
+                  className="w-full transition-item px-2 py-2 md:py-2 md:px-4 delay-100 text-sm md:text-sm font-medium  bg-orange-400  md:bg-ornage hover:font-medium flex justify-center hover:bg-orange-400 text-primary rounded-[5px]"
                 >
                   Logout
                 </button>
@@ -90,7 +83,7 @@ export default function Navbar() {
               to={route.path}
               className={`relative navlink pb-1 ${
                 pathMatchRoute(route.path) ? "text-primary active" : ""
-              }  leading-[120%] text-gray-100`}
+              }  leading-[120%] text-gray-100 z-50`}
             >
               {route.routeName}
             </NavLink>
@@ -105,10 +98,7 @@ export default function Navbar() {
               <div
                 className="w-10 rounded-full ring-2 ring-[#FEFEFF] "
                 tabIndex={0}
-                data-tooltip-id="avatar"
-                data-tooltip-content={currentUser?.displayName}
-                data-tooltip-place="left-start"
-                data-tooltip-class-name="custom-tooltip"
+                
               >
                 <img src={currentUser?.photoURL} />
               </div>
@@ -116,32 +106,36 @@ export default function Navbar() {
                 tabIndex={0}
                 className="dropdown-content z-[99999] menu py-2 px-8 shadow bg-base-100 rounded-box  mt-4 flex flex-col gap-2 font-poppins"
               >
-                <li className="font-bold whitespace-nowrap">
-                  {currentUser?.displayName}
-                </li>
+               
+                 <li className="font-bold whitespace-nowrap text-center">
+                   {currentUser?.displayName}
+                 </li> 
+               
                 <Link
                   to="/profile"
-                  className="py-2 px-[13px] bg-primary text-white rounded-[8px] font-semibold flex items-center justify-center "
+                  className={`py-2 px-[13px] bg-primary  rounded-[8px] font-semibold flex items-center justify-center relative navlink_dropdown pb-1 ${pathMatchRoute("/profile") && "active"}`}
                 >
                   Profile
                 </Link>
+                <Link
+                  to="/dashboard"
+                  className={`py-2 px-[13px] bg-primary  rounded-[8px] font-semibold flex items-center justify-center relative navlink_dropdown pb-1`}
+                >
+                  Dashboard
+                </Link>
                 <button
                   onClick={logoutHandler}
-                  className="transition-item px-2 py-2 md:py-4 md:px-8 delay-100 text-sm md:text-base font-medium  bg-orange-400  md:bg-ornage hover:font-medium   hover:bg-orange-400 text-primary rounded-[5px]max-md:hidden"
+                  className="transition-item px-2 py-2 md:py-2 md:px-4 delay-100 text-sm md:text-sm font-medium  bg-orange-400  md:bg-ornage hover:font-medium   hover:bg-orange-400 text-primary rounded-[5px]"
                 >
                   Logout
                 </button>
               </ul>
             </div>
-            {/*
-             <DarkModeToggler /> 
-            */}
+    
           </div>
         ) : (
           <div className="flex items-center gap-4">
-            {/*
-             <DarkModeToggler /> 
-            */}
+           
             <NavLink
               to="/signin"
               className={`transition-item px-2 py-2 md:py-4 md:px-8 delay-100 text-sm md:text-base font-medium  bg-orange-400  md:bg-ornage hover:font-medium   hover:bg-orange-400 text-primary rounded-[5px]   `}

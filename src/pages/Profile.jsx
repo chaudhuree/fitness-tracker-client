@@ -4,16 +4,17 @@ import { useNavigate } from "react-router-dom";
 import { getAuth, updateProfile } from "firebase/auth";
 import { useMutation } from "@tanstack/react-query";
 
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import Spinner from "../components/Spinner";
 import { useAuth } from "../context/AuthProvider";
 import { Helmet } from "react-helmet";
-import logo from "/2.svg";
-import axiosSecure from "../hooks/useAxiosHook";
+import useAxiosSecure from "../hooks/useAxiosHook";
+import { deleteUserDataFromLocalStorage } from "../utils";
 
 export default function Profile() {
   const auth = getAuth();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
 
   const { logout, setUpdateCount } = useAuth();
 
@@ -30,7 +31,8 @@ export default function Profile() {
   // logout function
   async function onLogout() {
     logout();
-    await axiosSecure.get("/auth/logout");
+    deleteUserDataFromLocalStorage();
+    toast.success("Logged out successfully");
     navigate("/");
   }
 
@@ -55,6 +57,7 @@ export default function Profile() {
       await updateProfileMutation.mutateAsync();
       setLoading(false);
       toast.success("Profile details updated");
+      navigate("/");
     } catch (error) {
       setLoading(false);
       toast.error("Could not update the profile details");
@@ -74,20 +77,23 @@ export default function Profile() {
   }
 
   return (
-    <>
-      <section className="max-w-6xl font-poppins flex justify-center items-center flex-col container mx-auto">
-        <Helmet>
-          <title>Profile</title>
-        </Helmet>
-        <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
-          <div className="hidden bg-cover lg:block lg:w-1/2 bg-[url('https://i.ibb.co/HCGZhzd/thom-milkovic-Fp-XTdv4-W2w-unsplash-2.jpg')]"></div>
+    
+    <div className="relative">
+    <Helmet>
+      <title>Sign In</title>
+    </Helmet>
+    <span className="bg__blur"></span>
+    <span className="bg__blur left-[90%] "></span>
+    <section className=" container mx-auto font-poppins min-h-screen flex justify-center items-center bg-[#111317] ">
+      <div className="flex w-full  mx-auto overflow-hidden  rounded-lg shadow-lg bg-[#1f2125] lg:max-w-4xl max-w-sm">
+        <div className="hidden bg-cover w-full lg:block lg:w-1/2 bg-[url('https://images.unsplash.com/photo-1554284126-aa88f22d8b74?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTMwfHxib2R5YnVpbGRpbmd8ZW58MHx8MHx8fDA%3D')]"></div>
 
           <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
             <div className="flex justify-center mx-auto -mb-6">
-              <img className=" size-[150px] " src={logo} alt="logo" />
+            <span className="  text-primary text-base md:text-2xl  font-extrabold">FityFits</span>
             </div>
 
-            <p className="mt-3 text-xl text-center text-primary dark:text-gray-200 font-bold ">
+            <p className="mt-8 text-base text-center text-white dark:text-gray-200 ">
               Update Profile
             </p>
 
@@ -95,7 +101,7 @@ export default function Profile() {
               {/* Name Input */}
               <div className="mt-4">
                 <label
-                  className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
+                  className="block mb-2 text-sm font-medium text-white dark:text-gray-200"
                   htmlFor="name"
                 >
                   Name
@@ -113,7 +119,7 @@ export default function Profile() {
               {/* Email Input */}
               <div className="mt-4">
                 <label
-                  className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
+                  className="block mb-2 text-sm font-medium text-white dark:text-gray-200"
                   htmlFor="email"
                 >
                   Email
@@ -129,7 +135,7 @@ export default function Profile() {
               </div>
               <div className="mt-4">
                 <label
-                  className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
+                  className="block mb-2 text-sm font-medium text-white dark:text-gray-200"
                   htmlFor="photoURL"
                 >
                   Photo URL
@@ -144,8 +150,8 @@ export default function Profile() {
                 />
               </div>
 
-              <div className="flex justify-between whitespace-nowrap text-sm sm:text-lg mb-6 my-2 underline">
-                <p className="flex items-center text-sky-800 dark:text-gray-300">
+              <div className="flex justify-between whitespace-nowrap text-sm sm:text-lg mb-6 my-2 ">
+                <p className="flex items-center text-zinc-300 dark:text-gray-300">
                   {changeDetail
                     ? "If everything ok then ➜ "
                     : "Do you want to update your profile?"}
@@ -154,7 +160,7 @@ export default function Profile() {
                       changeDetail && onSubmit();
                       setChangeDetail((prevState) => !prevState);
                     }}
-                    className="text-amber-600 dark:text-sky-600 dark:hover:text-sky-800 hover:text-[#1b0a0a] transition ease-in-out duration-200 ml-2 cursor-pointer  border-[#4f1410c8] font-semibold"
+                    className="text-amber-600  hover:text-orange-700 transition ease-in-out duration-200 ml-2 cursor-pointer  border-[#4f1410c8] font-semibold"
                   >
                     {changeDetail ? "Apply change" : "Edit"}
                   </span>
@@ -163,7 +169,7 @@ export default function Profile() {
               <div className="mt-6">
                 <button
                   onClick={onLogout}
-                  className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-primary rounded-lg hover:bg-sky-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+                  className="transition-item w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-ornage rounded-lg hover:bg-orange-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50 w-full"
                 >
                   Log out
                 </button>
@@ -172,6 +178,7 @@ export default function Profile() {
           </div>
         </div>
       </section>
-    </>
+    </div>
+
   );
 }

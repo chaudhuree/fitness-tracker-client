@@ -14,6 +14,15 @@ body {
 .dark body {
   @apply bg-gray-900; /* Dark mode styles */
 }
+/* dropdown menu */
+.menu li > *:not(ul, .menu-title, details, .btn):active,
+.menu li > *:not(ul, .menu-title, details, .btn).active,
+.menu li > details > summary:active {
+  --tw-bg-opacity: 1;
+  background-color: transparent;
+  --tw-text-opacity: 1;
+  color: orange;
+}
 
 .navlink::after {
   content: "";
@@ -29,7 +38,21 @@ body {
 .navlink:hover::after {
   width: 50%;
 }
-
+.navlink_dropdown::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #f9ac54;
+  transition: 0.3s;
+}
+.navlink_dropdown:hover::after {
+  width: 50%;
+  left: 50%;
+  translate: -50%;
+}
 .active::after {
   width: 100%;
 }
@@ -43,6 +66,10 @@ body {
   top: 400px;
   right: 0;
 }
+.bottom__blur__two {
+  top: 600px;
+  right: 0;
+}
 /* <span class="bg__blur"></span>
         <span class="bg__blur header__blur"></span> */
 /* banner */
@@ -51,6 +78,13 @@ body {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px #ffffff;
 }
-.transition-item{
+.transition-item {
   transition: 0.3s;
+}
+
+.glass_bg {
+  backdrop-filter: blur(16px) saturate(186%);
+  -webkit-backdrop-filter: blur(16px) saturate(186%);
+  background-color: rgba(7, 5, 5, 0.22);
+  border: 1px solid rgba(209, 213, 219, 0.3);
 }

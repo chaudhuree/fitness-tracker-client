@@ -1,35 +1,39 @@
-import {
-  GoogleAuthProvider,
-  getAuth,
-  signInWithPopup,
-} from "firebase/auth";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
-import { useNavigate,useLocation } from "react-router-dom";
-import { toast } from "react-toastify";
-import axiosSecure from "../hooks/useAxiosHook";
+import { useNavigate, useLocation } from "react-router-dom";
+import toast from "react-hot-toast";
+import { axiosDefault } from "../hooks/useAxiosHook";
 import { useMutation } from "@tanstack/react-query";
+import {setUserDataToLocalStorage} from "../utils";
 export default function OAuth() {
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state || '/'
-  const {mutateAsync} = useMutation({
-    mutationFn:async ({data})=>await axiosSecure.post("/auth",data),
-  })
+  const from = location.state || "/";
+  const { mutateAsync } = useMutation({
+    mutationFn: async ({ data }) => await axiosDefault.post("/login", data),
+    onSuccess: async ({ data }) => {
+      let { token, user } = data.data;
+      setUserDataToLocalStorage(token,user);
+    },
+  });
   async function onGoogleClick() {
     try {
       const auth = getAuth();
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
-      const data = await mutateAsync({data:{ email: user.email,displayName:user.displayName,photoURL:user.photoURL}});
-      
-      if(data.data.user){
+      const data = await mutateAsync({
+        data: {
+          email: user.email,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+        },
+      });
+
+      if (data.data.data.token) {
         toast.success("You have successfully signed in with Google");
-      }else{
-        toast.error("Could not authorize with Google");
       }
-      // navigate("/");
-      navigate(from, { replace: true })
+      navigate(from, { replace: true });
     } catch (error) {
       toast.error("Could not authorize with Google");
     }
@@ -39,7 +43,7 @@ export default function OAuth() {
     <>
       <button
         onClick={onGoogleClick}
-        className="flex items-center w-full justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
+        className="flex items-center w-full justify-center mt-4 text-gray-300 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200  hover:bg-gray-600"
       >
         <div className="px-4 py-2">
           <svg className="w-6 h-6" viewBox="0 0 40 40">
@@ -69,4 +73,3 @@ export default function OAuth() {
     </>
   );
 }
-

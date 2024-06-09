@@ -7,6 +7,7 @@ export default function Banner() {
   return (
     <>
       <div className="grid  grid-cols-12 font-poppins min-h-screen items-center relative header__container ">
+      <p className="absolute bottom-[5%] right-[20%] font-bold text-[140px] text-white opacity-[0.05] leading-[70px] max-md:hidden">FITNESS</p>
       <span className="bg__blur"></span>
       <span className="bg__blur bottom__blur"></span>
         <div className="col-span-12 md:col-span-6">
@@ -24,7 +25,8 @@ export default function Banner() {
         </div>
         <div className="col-span-12 md:col-span-6 grid justify-center items-center">
           <figure className="header__image max-w-[350px] m-auto relative">
-            <img  src={header} alt="header image" />
+            <span className="absolute top-0 left-[50%] transform translate-x-[-50%] text-[500px] md:text-[600px] font-normal leading-[320px] text-ornage opacity-[0.1] z-10">o</span>
+            <img  src={header} alt="header image"  className="z-20 relative"/>
           </figure>
         </div>
       </div>

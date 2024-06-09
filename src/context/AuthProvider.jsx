@@ -7,6 +7,7 @@ import {
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { deleteUserDataFromLocalStorage } from "../utils";
 export const AuthContext = createContext();
 export default function AuthProvider({ children }) {
   const [loading, setLoading] = useState(false);
@@ -48,6 +49,7 @@ export default function AuthProvider({ children }) {
     const auth = getAuth();
     setAuthSuccess(true);
     signOut(auth);
+    deleteUserDataFromLocalStorage();
     navigate("/signin");
   };
 
