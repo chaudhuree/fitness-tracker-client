@@ -1,3 +1,58 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Tailwind-based global styles */
+body {
+  @apply bg-[#111317]; /* Default light mode styles */
+}
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  
+}
+.dark body {
+  @apply bg-gray-900; /* Dark mode styles */
+}
+
+.navlink::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #f9ac54;
+  transition: 0.3s;
+}
+
+.navlink:hover::after {
+  width: 50%;
+}
+
+.active::after {
+  width: 100%;
+}
+.bg__blur {
+  position: absolute;
+  box-shadow: 0 0 1000px 50px #f9ac54;
+  z-index: 0;
+  top: 20px;
+}
+.bottom__blur {
+  top: 400px;
+  right: 0;
+}
+/* <span class="bg__blur"></span>
+        <span class="bg__blur header__blur"></span> */
+/* banner */
+
+
+.header_span {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #ffffff;
+}
+
+
+
