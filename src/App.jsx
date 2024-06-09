@@ -5,6 +5,7 @@ import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 import SignIn from "./pages/SignIn";
+import Trainers from "./pages/Trainers";
 import PrivateRoute from "./protectedroutes/PrivateRoute";
 import AdminPrivateRoute from "./protectedroutes/AdminPrivateRoute";
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/profile" element={<PrivateRoute />}>
           <Route index element={<Profile />} />
         </Route>
+        <Route path="/trainers" element={<Trainers />}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

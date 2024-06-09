@@ -8,7 +8,7 @@ import {
 export default function Features() {
   return (
     <div className="font-poppins my-10 ">
-      <h1 className="text-2xl lg:text-4xl font-bold mb-10 mg:mb-16 lg:mb-24">EXPLORE OUR PROGRAM</h1>
+      <h1 className="text-2xl lg:text-4xl font-bold mb-10 mb:mb-16 lg:mb-24">EXPLORE OUR PROGRAM</h1>
       <div className="flex flex-wrap justify-between">
         <div className="rounded-lg mb-4 border-2 border-transparent w-full md:w-[32%] lg:w-[23%] p-4 bg-[#1f2125] hover:bg-[#35373b] hover:border-ornage transition-item">
           <span className="py-2 px-2 inline-block mb-4 text-[25px] text-white bg-ornageDark rounded-[5px]">
