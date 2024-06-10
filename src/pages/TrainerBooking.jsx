@@ -87,7 +87,7 @@ export default function TrainerBooking() {
                       <span className="pt-2 text-3xl font-bold text-gray-300">
                         {pkg.price}$
                       </span>
-                      <span class="text-gray-500 dark:text-gray-400">
+                      <span className="text-gray-500 dark:text-gray-400">
                         /month
                       </span>
                     </div>
