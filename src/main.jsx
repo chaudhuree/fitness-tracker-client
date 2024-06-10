@@ -8,7 +8,8 @@ import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "react-hot-toast";
 import { ToastContainer } from "react-toastify";
 import AuthProvider from "./context/AuthProvider.jsx";
-import app from './firebaseCredential';
+import TrainerBookingProvider from "./context/TrainerBookingContext.jsx";
+import app from "./firebaseCredential";
 
 const queryClient = new QueryClient();
 
@@ -16,14 +17,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <Router>
-      <AuthProvider>
-        <HelmetProvider>
-        <App />
-        <Toaster position="top-right" />
-        <ToastContainer />
-        </HelmetProvider>
-
-      </AuthProvider>
+        <AuthProvider>
+          <TrainerBookingProvider>
+            <HelmetProvider>
+              <App />
+              <Toaster position="top-right" />
+              <ToastContainer />
+            </HelmetProvider>
+          </TrainerBookingProvider>
+        </AuthProvider>
       </Router>
     </QueryClientProvider>
   </React.StrictMode>

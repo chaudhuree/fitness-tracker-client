@@ -6,7 +6,7 @@ import {
 } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { deleteUserDataFromLocalStorage } from "../utils";
 export const AuthContext = createContext();
 export default function AuthProvider({ children }) {

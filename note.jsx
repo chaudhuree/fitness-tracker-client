@@ -49,6 +49,10 @@ export default function note() {
       >
         Login
       </NavLink>
+      {/*
+        bg-[#111317]
+        bg-[#1f2125]
+      */}
     </div>
   );
 }

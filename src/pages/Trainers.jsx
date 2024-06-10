@@ -15,7 +15,7 @@ export default function Trainers() {
     error,
     data: allTrainers,
   } = useQuery({
-    queryKey: "allTrainers",
+    queryKey: ["allTrainers"],
     queryFn: async () => {
       const { data } = await axiosDefault.get("/trainer");
 
@@ -28,7 +28,7 @@ export default function Trainers() {
   return (
     <Layout>
       <section className="text-white font-poppins">
-        <div className=" px-6 py-10 mx-auto">
+        <div className=" px-2 lg:px-6 py-5 lg:py-10 mx-auto">
           <h1 className="text-2xl lg:text-4xl font-bold mb-2 md:mb-4 lg:mb-6 text-center">
             Our <span className="text-amber-500">Dedicated Trainers</span>
           </h1>
@@ -89,7 +89,7 @@ export default function Trainers() {
                 </div>
                 <div className="flex flex-wrap gap-2 justify-between mt-4 max-md:text-sm">
                   <p className="group-hover:text-gray-300  "><span className="underline mr-2">Available Slot:</span> <span className="text-orange-200 font-medium ">{trainer.availableTimeSlot}</span></p>
-                  <Link className="relative navlink hover:text-blue-400">See More</Link>
+                  <Link to={`/trainer/${trainer._id}`} className="relative navlink hover:text-blue-400">See More</Link>
                 </div>
               </div>
             ))}
