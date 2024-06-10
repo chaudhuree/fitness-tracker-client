@@ -24,13 +24,13 @@ export default function ForgotPassword() {
   }
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <Helmet>
         <title>Forgot Password</title>
       </Helmet>
       <span className="bg__blur"></span>
     <span className="bg__blur bottom__blur__two "></span>
-      <section className="container mx-auto font-poppins min-h-screen flex justify-center items-center bg-[#111317]">
+      <section className="container mx-auto font-poppins min-h-screen flex justify-center items-center bg-[#111317] ">
         <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-[#1f2125] rounded-lg shadow-lg lg:max-w-4xl">
           <div className="hidden bg-cover lg:block lg:w-1/2 bg-[url('https://images.unsplash.com/photo-1507398941214-572c25f4b1dc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fGZpdG5lc3N8ZW58MHx8MHx8fDA%3D')]"></div>
 

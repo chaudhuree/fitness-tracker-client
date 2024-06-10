@@ -10,7 +10,9 @@ import Trainer from "./pages/Trainer";
 import AddTrainer from "./pages/AddTrainer";
 import TrainerBooking from "./pages/TrainerBooking";
 import TrainerCheckout from "./pages/TrainerCheckout";
+import Classes from "./pages/Classes";
 import PrivateRoute from "./protectedroutes/PrivateRoute";
+import ClassItem from "./pages/ClassItem";
 import AdminPrivateRoute from "./protectedroutes/AdminPrivateRoute";
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path="/addtrainer" element={<AddTrainer />} />
         <Route path="/trainercheckout" element={<TrainerCheckout />} />
         <Route path="/trainerbooking/:trainer/:slot" element={<TrainerBooking />} />
+        <Route path="/classes" element={<Classes />} />
+        <Route path="/class/:id" element={<ClassItem />} />
         <Route path="/trainer/:id" element={<Trainer />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

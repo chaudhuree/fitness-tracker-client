@@ -24,11 +24,11 @@ export default function Trainers() {
   });
   console.log("allTrainers", allTrainers);
 
-  if(isLoading) return <Spinner />
+  if (isLoading) return <Spinner />;
   return (
     <Layout>
-      <section className="text-white font-poppins">
-        <div className=" px-2 lg:px-6 py-5 lg:py-10 mx-auto">
+      <section className="text-white font-poppins py-5 lg:py-10 mx-auto">
+        <div className=" px-2 lg:px-6 py-5 ">
           <h1 className="text-2xl lg:text-4xl font-bold mb-2 md:mb-4 lg:mb-6 text-center">
             Our <span className="text-amber-500">Dedicated Trainers</span>
           </h1>
@@ -88,8 +88,29 @@ export default function Trainers() {
                   </Link>
                 </div>
                 <div className="flex flex-wrap gap-2 justify-between mt-4 max-md:text-sm">
-                  <p className="group-hover:text-gray-300  "><span className="underline mr-2">Available Slot:</span> <span className="text-orange-200 font-medium ">{trainer.availableTimeSlot}</span></p>
-                  <Link to={`/trainer/${trainer._id}`} className="relative navlink hover:text-blue-400">See More</Link>
+                  <div className="group-hover:text-gray-300  ">
+                    <span className="underline mr-2 inline-block mb-2">
+                      Available Slot:
+                    </span>{" "}
+                    <p className="text-orange-200 font-medium flex flex-wrap gap-1 ">
+                      {trainer.slotTime.map((slot, index) => (
+                        <span
+                          className="px-1 py-[2px] bg-sky-600 hover:bg-sky-700 transition-all transform duration-300 text-white text-sm rounded-md"
+                          key={index}
+                        >
+                          {slot.scheduleTime}{" "}
+                        </span>
+                      ))}
+                    </p>
+                  </div>
+                </div>
+                <div className="w-full flex justify-end items-center mt-4">
+                  <Link
+                    to={`/trainer/${trainer._id}`}
+                    className="relative navlink hover:text-blue-400"
+                  >
+                    See More
+                  </Link>
                 </div>
               </div>
             ))}
