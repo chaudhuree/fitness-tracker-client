@@ -113,7 +113,6 @@ export default function AddTrainer() {
         areaOfExpertise,
         classes,
         status: "pending",
-        rejectedReason: "",
         packages: [
           {
             name: "basic",
@@ -214,7 +213,6 @@ export default function AddTrainer() {
       areaOfExpertise: areaOfExpertise,
       classes: classes,
       status: "pending",
-      rejectedReason: "",
       packages: [
         {
           name: "basic",
@@ -230,7 +228,8 @@ export default function AddTrainer() {
         },
       ],
     };
-
+    console.log('inputBody', inputBody);
+    
     // Function to check if any field is null or empty
     const isFieldEmpty = (obj) => {
       for (const key in obj) {
