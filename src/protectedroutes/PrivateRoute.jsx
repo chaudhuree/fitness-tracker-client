@@ -3,11 +3,12 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { useAuthStatus } from "../hooks/useAuthStatus";
 import useAxiosSecure from "../hooks/useAxiosHook";
+
 const PrivateRoute = () => {
   const { loggedIn, checkingStatus } = useAuthStatus();
   const axiosSecure = useAxiosSecure();
   const location = useLocation();
-  // console.log('location', location);
+
   axiosSecure
     .get("/auth/islogin")
     .then((res) => {
@@ -17,12 +18,18 @@ const PrivateRoute = () => {
     })
     .catch((err) => {
       console.log("err", err);
-      toast.error("something went wrong, please login again");
+
+      // Dismiss any existing toast messages
+      toast.dismiss();
+      
+      // Show new error message
+      toast.error("Please login");
     });
 
   if (checkingStatus) {
     return <Spinner />;
   }
+  
   return loggedIn ? (
     <Outlet />
   ) : (
