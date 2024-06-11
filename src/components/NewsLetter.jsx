@@ -61,7 +61,7 @@ export default function NewsLetter() {
               </button>
             </form>
 
-            <p className="mt-3 text-sm text-sky-100 dark:text-gray-300">
+            <p className="mt-3 ml-2 text-sm text-sky-100 dark:text-gray-300">
               No worries, we don't spam.
             </p>
           </div>

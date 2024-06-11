@@ -6,6 +6,8 @@ import About from "../components/About"
 import JoinUs from "../components/JoinUs"
 import {useAuthStatus} from "../hooks/useAuthStatus"
 import NewsLetter from "../components/NewsLetter"
+import LatestForums from "../components/LatestForums"
+import Teams from "../components/Teams"
 
 export default function Home() {
   const { checkingStatus} = useAuthStatus()
@@ -20,6 +22,8 @@ export default function Home() {
         <About />
         <JoinUs />
         <NewsLetter />
+        <LatestForums />
+        <Teams />
       </div>
     </Layout>
   )
