@@ -96,8 +96,8 @@ export default function SignIn() {
 
           <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
             <div className="flex justify-center mx-auto -mb-6">
-              <span className="  text-primary text-base md:text-2xl  mb-5 font-extrabold">
-                FityFits
+              <span className="  text-primary hover:text-sky-200 text-base md:text-2xl  mb-5 font-extrabold">
+                <Link to="/">FityFits</Link>
               </span>
             </div>
 

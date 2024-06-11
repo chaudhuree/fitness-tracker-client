@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 // firebase
 import { getAuth, updateProfile } from "firebase/auth";
 import { useMutation } from "@tanstack/react-query";
@@ -77,20 +77,21 @@ export default function Profile() {
   }
 
   return (
-    
     <div className="relative">
-    <Helmet>
-      <title>Sign In</title>
-    </Helmet>
-    <span className="bg__blur"></span>
-    <span className="bg__blur left-[90%] "></span>
-    <section className=" container mx-auto font-poppins min-h-screen flex justify-center items-center bg-[#111317] ">
-      <div className="flex w-full  mx-auto overflow-hidden  rounded-lg shadow-lg bg-[#1f2125] lg:max-w-4xl max-w-sm">
-        <div className="hidden bg-cover w-full lg:block lg:w-1/2 bg-[url('https://images.unsplash.com/photo-1554284126-aa88f22d8b74?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTMwfHxib2R5YnVpbGRpbmd8ZW58MHx8MHx8fDA%3D')]"></div>
+      <Helmet>
+        <title>Sign In</title>
+      </Helmet>
+      <span className="bg__blur"></span>
+      <span className="bg__blur left-[90%] "></span>
+      <section className=" container mx-auto font-poppins min-h-screen flex justify-center items-center bg-[#111317] ">
+        <div className="flex w-full  mx-auto overflow-hidden  rounded-lg shadow-lg bg-[#1f2125] lg:max-w-4xl max-w-sm">
+          <div className="hidden bg-cover w-full lg:block lg:w-1/2 bg-[url('https://images.unsplash.com/photo-1554284126-aa88f22d8b74?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTMwfHxib2R5YnVpbGRpbmd8ZW58MHx8MHx8fDA%3D')]"></div>
 
           <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
             <div className="flex justify-center mx-auto -mb-6">
-            <span className="  text-primary text-base md:text-2xl  font-extrabold">FityFits</span>
+              <span className="  text-primary hover:text-sky-200 text-base md:text-2xl  font-extrabold">
+                <Link to="/">FityFits</Link>
+              </span>
             </div>
 
             <p className="mt-8 text-base text-center text-white dark:text-gray-200 ">
@@ -179,6 +180,5 @@ export default function Profile() {
         </div>
       </section>
     </div>
-
   );
 }
