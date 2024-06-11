@@ -7,7 +7,7 @@ import {  RiDeleteBin2Fill } from "react-icons/ri"
 import toast from "react-hot-toast"
 export default function AllTrainer() {
   const [page, setPage] = useState(1)
-  const [limit, setLimit] = useState(2)
+  const [limit, setLimit] = useState(10)
   const axiosSecure = useAxiosSecure()
   const queryClient = useQueryClient()
   const { data: trainersData, isLoading } = useQuery({
