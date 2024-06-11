@@ -15,7 +15,6 @@ export default function NewsletterSubscribers() {
       return response.data;
     },
   });
-  console.log("data", subscribersData);
   if (isLoading) {
     return <FullscreenLoader />;
   }

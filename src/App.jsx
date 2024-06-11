@@ -16,6 +16,7 @@ import Forum from "./pages/Forum";
 import PrivateRoute from "./protectedroutes/PrivateRoute";
 import ClassItem from "./pages/ClassItem";
 import NewsletterSubscribers from "./pages/NewsletterSubscribers";
+import AllTrainer from "./pages/AllTrainer";
 import AdminPrivateRoute from "./protectedroutes/AdminPrivateRoute";
 function App() {
   return (
@@ -41,9 +42,13 @@ function App() {
         />
         <Route path="/classes" element={<Classes />} />
         <Route path="/forums" element={<Forums />} />
-        
-          <Route path="/newslettersubscribers" element={<NewsletterSubscribers />} />
-        
+
+        <Route
+          path="/newslettersubscribers"
+          element={<NewsletterSubscribers />}
+        />
+        <Route path="/alltrainers" element={<AllTrainer />} />
+
         <Route path="/class/:id" element={<PrivateRoute />}>
           <Route path="/class/:id" element={<ClassItem />} />
         </Route>
