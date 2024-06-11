@@ -59,10 +59,10 @@ export default function Classes() {
         <div className="flex justify-center flex-col items-center mb-20">
           <h2 className="font-bold text-lg mb-4">Search Classe</h2>
           <form className="w-full flex justify-center items-center" onSubmit={handleSearch}>
-          <input placeholder="search class" type="text" name="search" className="px-4 text-black w-1/4 py-2 border rounded-md" />
+          <input placeholder="search class" type="text" name="search" className="px-4 text-black w-full lg:w-1/4 py-2 border rounded-md" />
           </form>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 items-center justify-center gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-6">
           {classes?.classes?.map((classItem) => (
             <ClassCard key={classItem._id} classItem={classItem} />
           ))}

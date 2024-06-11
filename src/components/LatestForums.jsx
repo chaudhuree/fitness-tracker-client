@@ -22,7 +22,7 @@ export default function LatestForums() {
             Latest Forums
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4">
-          {forums?.forums.map((forum) => (
+          {forums?.forums?.map((forum) => (
             <HomeForumCard key={forum._id} forum={forum} />
           ))}
           </div>

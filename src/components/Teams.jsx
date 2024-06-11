@@ -21,7 +21,7 @@ export default function Teams() {
     : [];
   return (
     <div className="font-poppins my-10 relative">
-      <span className="bg__blur--two right-[40%] top-[30%]"></span>
+      
       <h1 className="text-2xl lg:text-4xl font-bold mb-10 mb:mb-16 lg:mb-24">
         Meet Out Instructors
       </h1>

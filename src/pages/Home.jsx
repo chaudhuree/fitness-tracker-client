@@ -8,6 +8,7 @@ import {useAuthStatus} from "../hooks/useAuthStatus"
 import NewsLetter from "../components/NewsLetter"
 import LatestForums from "../components/LatestForums"
 import Teams from "../components/Teams"
+import FeaturedClasses from "../components/FeaturedClasses"
 
 export default function Home() {
   const { checkingStatus} = useAuthStatus()
@@ -24,6 +25,7 @@ export default function Home() {
         <NewsLetter />
         <LatestForums />
         <Teams />
+        <FeaturedClasses />
       </div>
     </Layout>
   )
