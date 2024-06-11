@@ -1,15 +1,15 @@
-import moment from "moment";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import useAxiosSecure from "../hooks/useAxiosHook";
+import moment from "moment";
 import toast from "react-hot-toast";
-import { getUserDataFromLocalStorage } from "../utils";
-import { useNavigate } from "react-router-dom";
 import {
+  RiArrowDownCircleFill,
+  RiArrowDownCircleLine,
   RiArrowUpCircleFill,
   RiArrowUpCircleLine,
-  RiArrowDownCircleLine,
-  RiArrowDownCircleFill,
 } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../hooks/useAxiosHook";
+import { getUserDataFromLocalStorage } from "../utils";
 export default function ForumCard({ forum }) {
   const queryClient = useQueryClient();
   const axiosSecure = useAxiosSecure();
@@ -48,9 +48,9 @@ export default function ForumCard({ forum }) {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             ></path>
             <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>
           </svg>
@@ -63,12 +63,22 @@ export default function ForumCard({ forum }) {
         <h2 className="text-base font-medium text-sky-500">{forum.subtitle}</h2>
       </div>
       <p className="mb-5 font-light text-sm text-white dark:text-gray-400 whitespace-pre-wrap">
-        {forum.description.substring(0, 120)}...<span onClick={()=>navigate(`/forum/${forum._id}`)} className="text-ornage cursor-pointer">Read more</span>
+        {forum.description.substring(0, 120)}...
+        <span
+          onClick={() => navigate(`/forum/${forum._id}`)}
+          className="text-ornage cursor-pointer"
+        >
+          Read more
+        </span>
       </p>
       <div className="flex justify-center items-center my-4">
-      <figure className="w-full flex justify-center items-center">
-        <img className="w-full rounded-md md:w-[80%]   max-h-[200px]" src={forum.image} alt="Bonnie Green avatar" />
-      </figure>
+        <figure className="w-full flex justify-center items-center">
+          <img
+            className="w-full rounded-md md:w-[80%]   max-h-[200px]"
+            src={forum.image}
+            alt="Bonnie Green avatar"
+          />
+        </figure>
       </div>
       <div className="flex justify-between items-center">
         <div className="flex items-center space-x-4">
@@ -81,7 +91,7 @@ export default function ForumCard({ forum }) {
             {forum.author.displayName}
           </span>
         </div>
-     
+
         <div className="inline-flex gap-4 items-center font-medium text-primary-600 dark:text-primary-500 ">
           <div className="flex items-center">
             {forum.upvotes.includes(getUserDataFromLocalStorage()._id) ? (

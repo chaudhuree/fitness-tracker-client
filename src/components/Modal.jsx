@@ -36,7 +36,7 @@ const Modal = ({ isOpen, onClose, classId,price,className,refetch }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log('submitting form');
+    // console.log('submitting form');
     
     
     await mutateAsync({classId,price});

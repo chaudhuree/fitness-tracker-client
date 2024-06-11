@@ -17,7 +17,7 @@ const AdminPrivateRoute = () => {
       }
     })
     .catch((err) => {
-      console.log("err", err);
+      // console.log("err", err);
       toast.error("something went wrong, please login again");
     });
   const isAdmin = getUserDataFromLocalStorage().role === "admin";

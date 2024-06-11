@@ -19,7 +19,7 @@ export default function Forums() {
       return data.data;
     },
   });
-  console.log('forums', forums);
+  // console.log('forums', forums);
   
   if (isLoading) {
     return <Spinner />;

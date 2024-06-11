@@ -22,7 +22,7 @@ export default function Trainers() {
       return data.data;
     },
   });
-  console.log("allTrainers", allTrainers);
+  // console.log("allTrainers", allTrainers);
 
   if (isLoading) return <Spinner />;
   return (
