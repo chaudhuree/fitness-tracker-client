@@ -29,8 +29,8 @@ function App() {
         </Route>
         <Route path="/trainers" element={<Trainers />} />
         <Route path="/addtrainer" element={<AddTrainer />} />
-        <Route ptha="/trainercheckout" element={<PrivateRoute />} >
-        <Route path="/trainercheckout" element={<TrainerCheckout />} />
+        <Route ptha="/trainercheckout" element={<PrivateRoute />}>
+          <Route path="/trainercheckout" element={<TrainerCheckout />} />
         </Route>
         <Route
           path="/trainerbooking/:trainer/:slot"
@@ -42,7 +42,9 @@ function App() {
           <Route path="/class/:id" element={<ClassItem />} />
         </Route>
         <Route path="/trainer/:id" element={<Trainer />} />
-        <Route path="/forum/:id" element={<Forum />} />
+        <Route path="/forum/:id" element={<PrivateRoute />}>
+          <Route path="/forum/:id" element={<Forum />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

@@ -53,6 +53,10 @@ export default function note() {
         bg-[#111317]
         bg-[#1f2125]
       */}
+
+      {/*
+        <Route path="" element={<PrivateRoute />}></Route>
+      */}
     </div>
   );
 }

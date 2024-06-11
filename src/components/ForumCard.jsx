@@ -10,18 +10,25 @@ import {
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosHook";
 import { getUserDataFromLocalStorage } from "../utils";
+
 export default function ForumCard({ forum }) {
   const queryClient = useQueryClient();
   const axiosSecure = useAxiosSecure();
+  const user = getUserDataFromLocalStorage();
+  const userId = user?._id;
   const { mutateAsync } = useMutation({
     mutationFn: async (vote) => {
+      if (!userId) {
+        toast.error("You need to be logged in to vote");
+        return;
+      }
       const { data } = await axiosSecure.put(`/forum/vote/${forum._id}`, {
         vote,
-        userId: getUserDataFromLocalStorage()._id,
+        userId,
       });
       return data;
     },
-    onError: (error) => {
+    onError: () => {
       toast.error("Failed to vote");
     },
     onSuccess: () => {
@@ -30,9 +37,15 @@ export default function ForumCard({ forum }) {
     },
   });
   const navigate = useNavigate();
+
   const handleVote = async (vote) => {
+    if (!userId) {
+      toast.error("You need to be logged in to vote");
+      return;
+    }
     await mutateAsync(vote);
   };
+
   return (
     <article className="p-6 bg-[#1f2125] rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 w-full md:w-2/3 mx-auto">
       <div className="flex justify-between items-center mb-5 text-white">
@@ -58,7 +71,7 @@ export default function ForumCard({ forum }) {
         </span>
         <span className="text-sm">{moment(forum.createdAt).fromNow()}</span>
       </div>
-      <div className="mb-2   tracking-tight text-white dark:text-white">
+      <div className="mb-2 tracking-tight text-white dark:text-white">
         <h1 className="text-xl font-semibold text-ornage">{forum.title}</h1>
         <h2 className="text-base font-medium text-sky-500">{forum.subtitle}</h2>
       </div>
@@ -74,9 +87,9 @@ export default function ForumCard({ forum }) {
       <div className="flex justify-center items-center my-4">
         <figure className="w-full flex justify-center items-center">
           <img
-            className="w-full rounded-md md:w-[80%]   max-h-[200px]"
+            className="w-full rounded-md md:w-[80%] max-h-[200px]"
             src={forum.image}
-            alt="Bonnie Green avatar"
+            alt="Forum"
           />
         </figure>
       </div>
@@ -85,16 +98,16 @@ export default function ForumCard({ forum }) {
           <img
             className="w-7 h-7 rounded-full"
             src={forum.author.photoURL}
-            alt="Bonnie Green avatar"
+            alt="Author"
           />
           <span className="font-medium dark:text-white">
             {forum.author.displayName}
           </span>
         </div>
 
-        <div className="inline-flex gap-4 items-center font-medium text-primary-600 dark:text-primary-500 ">
+        <div className="inline-flex gap-4 items-center font-medium text-primary-600 dark:text-primary-500">
           <div className="flex items-center">
-            {forum.upvotes.includes(getUserDataFromLocalStorage()._id) ? (
+            {forum.upvotes.includes(userId) ? (
               <RiArrowUpCircleFill
                 className="text-ornage"
                 onClick={() => toast.error("You have already upvoted")}
@@ -105,10 +118,10 @@ export default function ForumCard({ forum }) {
                 onClick={() => handleVote("upvote")}
               />
             )}
-            <span className=" text-xs">{forum.upvotes.length}</span>
+            <span className="text-xs">{forum.upvotes.length}</span>
           </div>
           <div className="flex items-center">
-            {forum.downvotes.includes(getUserDataFromLocalStorage()._id) ? (
+            {forum.downvotes.includes(userId) ? (
               <RiArrowDownCircleFill
                 className="text-ornage"
                 onClick={() => toast.error("You have already downvoted")}
@@ -119,7 +132,7 @@ export default function ForumCard({ forum }) {
                 onClick={() => handleVote("downvote")}
               />
             )}
-            <span className=" text-xs">{forum.downvotes.length}</span>
+            <span className="text-xs">{forum.downvotes.length}</span>
           </div>
         </div>
       </div>

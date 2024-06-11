@@ -2,7 +2,6 @@ import Layout from "../layout/Layout";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { axiosDefault } from "../hooks/useAxiosHook";
-import toast from "react-hot-toast";
 import Spinner from "../components/Spinner";
 import ForumCard from "../components/ForumCard";
 export default function Forums() {
@@ -10,7 +9,6 @@ export default function Forums() {
   const [limit, setLimit] = useState(6);
   const{
     isLoading,
-    isError,
     data: forums,
   } = useQuery({
     queryKey: ["forums", page, limit],
@@ -19,7 +17,6 @@ export default function Forums() {
       return data.data;
     },
   });
-  // console.log('forums', forums);
   
   if (isLoading) {
     return <Spinner />;
