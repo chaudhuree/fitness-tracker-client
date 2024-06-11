@@ -1,44 +1,31 @@
 import Layout from "../layout/Layout";
-import { useState, useEffect } from "react";
-import Spinner from "../components/Spinner";
-import { useAuthStatus } from "../hooks/useAuthStatus";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { axiosDefault } from "../hooks/useAxiosHook";
-import ClassCard from "../components/ClassCard";
-export default function Classes() {
+import toast from "react-hot-toast";
+import Spinner from "../components/Spinner";
+import ForumCard from "../components/ForumCard";
+export default function Forums() {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(6);
-  const [search, setSearch] = useState("");
-  const { checkingStatus } = useAuthStatus();
-  const {
+  const{
     isLoading,
     isError,
-    error,
-    data: classes,
+    data: forums,
   } = useQuery({
-    queryKey: ["classes", page, limit, search],
+    queryKey: ["forums", page, limit],
     queryFn: async () => {
-      const { data } = await axiosDefault.get(
-        `/class?page=${page}&limit=${limit}&search=${search}`
-      );
+      const { data } = await axiosDefault.get(`/forums?page=${page}&limit=${limit}`);
       return data.data;
     },
   });
-  // console.log("classes", classes);
-
-  //  search function
-  const handleSearch = (e) => {
-    e.preventDefault();
-
-    setSearch(e.target.search.value);
-    setPage(1);
-  };
-
-  if (checkingStatus || isLoading) {
+  console.log('forums', forums);
+  
+  if (isLoading) {
     return <Spinner />;
   }
   // pagination function
-  const numberOfPages = Math.ceil(classes?.total / limit);
+  const numberOfPages = Math.ceil(forums?.total / limit);
   const pages = [...Array(numberOfPages).keys()].map((element) => element + 1);
 
   const handlePaginationButton = (value) => {
@@ -50,24 +37,14 @@ export default function Classes() {
         <span className="bg__blur right-0"></span>
         <div className=" px-6 py-5 pb-10 mx-auto">
           <h1 className="text-2xl lg:text-4xl font-bold mb-2 md:mb-4 lg:mb-6 text-center">
-            Our <span className="text-amber-500">Exclusive Classes</span>
+            Forum <span className="text-amber-500">Posts</span>
           </h1>
         </div>
-        {/*
-          classes
-        */}
-        <div className="flex justify-center flex-col items-center mb-20">
-          <h2 className="font-bold text-lg mb-4">Search Classe</h2>
-          <form className="w-full flex justify-center items-center" onSubmit={handleSearch}>
-          <input placeholder="search class" type="text" name="search" className="px-4 text-black w-1/4 py-2 border rounded-md" />
-          </form>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 items-center justify-center gap-6">
-          {classes?.classes?.map((classItem) => (
-            <ClassCard key={classItem._id} classItem={classItem} />
+        <div className="grid gap-8 lg:grid-cols-1">
+          {forums?.forums.map((forum) => (
+            <ForumCard key={forum._id} forum={forum} />
           ))}
         </div>
-
         {/*
           pagination
         */}

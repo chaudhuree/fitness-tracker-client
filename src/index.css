@@ -62,6 +62,11 @@ body {
   z-index: 0;
   top: 20px;
 }
+.bg__blur--two {
+  position: absolute;
+  box-shadow: 0 0 1000px 50px #f9ac54;
+  z-index: 0;
+}
 .bottom__blur {
   top: 400px;
   right: 0;

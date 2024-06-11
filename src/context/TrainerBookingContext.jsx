@@ -12,10 +12,10 @@ export default function TrainerBookingProvider({ children }) {
     price: "",
   });
 
-  useEffect(() => {
-    console.log('bookingData', bookingData);
+  // useEffect(() => {
+  //   console.log('bookingData', bookingData);
     
-  }, [bookingData]);
+  // }, [bookingData]);
 
   const trainerBookingValue = {
     bookingData,
