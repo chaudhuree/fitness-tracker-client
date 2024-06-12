@@ -2,18 +2,21 @@ import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
 import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../hooks/useAxiosHook";
 import { axiosDefault } from "../hooks/useAxiosHook";
 import { useMutation } from "@tanstack/react-query";
-import {setUserDataToLocalStorage} from "../utils";
+import { setUserDataToLocalStorage } from "../utils";
+import moment from "moment/moment";
 export default function OAuth() {
   const navigate = useNavigate();
   const location = useLocation();
+  const axiosSecure = useAxiosSecure();
   const from = location.state || "/";
   const { mutateAsync } = useMutation({
     mutationFn: async ({ data }) => await axiosDefault.post("/login", data),
     onSuccess: async ({ data }) => {
       let { token, user } = data.data;
-      setUserDataToLocalStorage(token,user);
+      setUserDataToLocalStorage(token, user);
     },
   });
   async function onGoogleClick() {
@@ -31,10 +34,20 @@ export default function OAuth() {
       });
 
       if (data.data.data.token) {
+        // save last login time to the database
+        await axiosSecure.put("/auth/lastlogin", {
+          email: user.email,
+          lastLogin: moment(user.metadata.lastSignInTime).format(
+            "YYYY-MM-DD HH:mm:ss"
+          ),
+        });
+
         toast.success("You have successfully signed in with Google");
       }
       navigate(from, { replace: true });
     } catch (error) {
+      console.log("oauth error", error);
+
       toast.error("Could not authorize with Google");
     }
   }

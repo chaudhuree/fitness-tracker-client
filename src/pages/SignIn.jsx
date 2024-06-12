@@ -6,9 +6,10 @@ import toast from "react-hot-toast";
 import OAuth from "../components/OAuth";
 import Spinner from "../components/Spinner";
 import { Helmet } from "react-helmet";
-import { axiosDefault } from "../hooks/useAxiosHook";
+import useAxiosSecure, { axiosDefault } from "../hooks/useAxiosHook";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { setUserDataToLocalStorage } from "../utils";
+import moment from "moment/moment";
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,6 +18,7 @@ export default function SignIn() {
     email: "",
     password: "",
   });
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state || "/";
@@ -30,16 +32,10 @@ export default function SignIn() {
   }
   const { mutateAsync } = useMutation({
     mutationFn: async ({ data }) => await axiosDefault.post("/login", data),
-    onSuccess:async  ({ data }) => {
+    onSuccess: async ({ data }) => {
       let { token, user } = data.data;
-      // localStorage.setItem("token", token);
-      // localStorage.setItem("user", JSON.stringify(user));
+
       setUserDataToLocalStorage(token, user);
-      if(user.role ==="trainer"){
-        let trainerData =await axiosDefault.get(`/trainer/${user._id}`,user);
-        console.log('trainerData',trainerData.data.data);
-        
-      }
     },
   });
   async function onSubmit(e) {
@@ -63,6 +59,8 @@ export default function SignIn() {
         email,
         password
       );
+      console.log("userCredential", userCredential);
+
       if (userCredential.user) {
         const data = await mutateAsync({
           data: {
@@ -72,6 +70,13 @@ export default function SignIn() {
           },
         });
         if (data.data.data.token) {
+          // save last login time to the database
+          await axiosSecure.put("/auth/lastlogin", {
+            email: userCredential.user.email,
+            lastLogin: moment(
+              userCredential.user.metadata.lastSignInTime
+            ).format("YYYY-MM-DD HH:mm:ss"),
+          });
           toast.success("You have successfully signed in with email");
         }
         navigate(from, { replace: true });
