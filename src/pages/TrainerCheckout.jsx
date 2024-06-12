@@ -22,7 +22,8 @@ export default function TrainerCheckout() {
         package: bookingData.packageName,
         paymentStatus:"approved",
         transactionId:"1234567890",
-        price: bookingData.price
+        price: bookingData.price,
+        class: bookingData.class.value
       });
       // console.log('data', data);
       
@@ -46,6 +47,7 @@ export default function TrainerCheckout() {
       slot: null,
       packageName: "",
       price: "",
+      class:null
     });
     navigate('/')
   }
@@ -92,6 +94,14 @@ export default function TrainerCheckout() {
               </span>
               <span className="md:text-xl text-lg text-orange-400 ">
                 {bookingData.price}$<span className="text-sm text-gray-400">/month</span>
+              </span>
+            </p>
+            <p className="space-x-2">
+              <span className="md:text-xl text-lg capitalize">
+                selected class:
+              </span>
+              <span className="md:text-xl text-lg text-orange-400 ">
+                {bookingData.class.label}
               </span>
             </p>
           </div>

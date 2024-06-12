@@ -1,4 +1,5 @@
 import Layout from "../layout/Layout";
+import {useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
@@ -6,7 +7,9 @@ import { axiosDefault } from "../hooks/useAxiosHook";
 import { useAuthStatus } from "../hooks/useAuthStatus";
 import { useTrainerBooking } from "../context/TrainerBookingContext";
 import toast from "react-hot-toast";
+import Select from "react-select";
 export default function TrainerBooking() {
+  const [selectedClass, setSelectedClass] = useState(null);
   const { checkingStatus } = useAuthStatus();
   const { bookingData, setBookingData } = useTrainerBooking();
   const { trainer: id, slot } = useParams();
@@ -23,6 +26,13 @@ export default function TrainerBooking() {
       return data.data;
     },
   });
+  const classOptions = trainerData?.classes.map((cls) => ({
+    value: cls._id,
+    label: cls.name,
+  }));
+  const handleClassSelection = (selectedOption) => {
+    setSelectedClass(selectedOption);
+  };
   const selectedSlot = trainerData?.slotTime.find((s) => s._id === slot);
   const hadlePackageSelection = (packageName, packagePrice) => {
     setBookingData({
@@ -31,10 +41,12 @@ export default function TrainerBooking() {
       slot: selectedSlot,
       packageName: packageName,
       price: packagePrice,
+      class:selectedClass
     });
   };
   const handleJoin = () => {
     if(!bookingData.packageName) return toast.error("Please select a package");
+    if(!bookingData.class) return toast.error("Please select a class");
     navigate('/trainercheckout')
   };
   if (checkingStatus || isLoading) return <Spinner />;
@@ -56,17 +68,18 @@ export default function TrainerBooking() {
                 {selectedSlot.slotName} - {selectedSlot.scheduleTime}
               </span>
             </p>
-            <p className="space-x-2">
-              <span className="md:text-xl text-lg capitalize">available classes:</span>
-              <span className="md:text-xl text-lg text-orange-400">
-                {trainerData.classes.map((cls, index) => (
-                  <span key={index} className="mr-2">
-                    {cls.name}
-                    {index < trainerData.classes.length - 1 ? "," : ""}
-                  </span>
-                ))}
-              </span>
-            </p>
+            <div className="flex flex-wrap justify-center items-center gap-4">
+              <p className="md:text-xl text-lg capitalize">select classe:</p>
+              <Select
+                  className="text-[#111317] mt-2 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring min-w-[200px]"
+                  closeMenuOnSelect={false}
+                  
+                  defaultValue={selectedClass}
+                  
+                  options={classOptions}
+                  onChange={handleClassSelection}
+                />
+            </div>
           </div>
 
           {/*

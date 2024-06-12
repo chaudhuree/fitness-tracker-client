@@ -23,7 +23,7 @@ const MasterLayout = ({ children }) => {
     sideNavRef = useRef();
   const { logout, currentUser } = useAuth();
   const userData = getUserDataFromLocalStorage();
-  console.log("userData", userData);
+  // console.log("userData", userData);
 
   const onLogout = () => {
     logout();

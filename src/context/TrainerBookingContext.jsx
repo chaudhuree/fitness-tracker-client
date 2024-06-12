@@ -10,12 +10,13 @@ export default function TrainerBookingProvider({ children }) {
     slot: null,
     packageName: "",
     price: "",
+    class:null
   });
 
-  // useEffect(() => {
-  //   console.log('bookingData', bookingData);
+  useEffect(() => {
+    console.log('bookingData', bookingData);
     
-  // }, [bookingData]);
+  }, [bookingData]);
 
   const trainerBookingValue = {
     bookingData,

@@ -91,12 +91,12 @@ export default function ClassItem() {
         {/*
           Booking modal starts here
         */}
-        <div className="grid justify-center my-4 items-center">
-          {/*
-           <button className="px-14 py-3 rounded-md transition-all duration-200 hover:bg-sky-500 bg-sky-700">Book Now</button> 
-          */}
-          <ModalItem classId={classData._id} className={classData.name} price={classData.price} refetch={refetch} />
-        </div>
+      {/*
+         <div className="grid justify-center my-4 items-center">
+           
+           <ModalItem classId={classData._id} className={classData.name} price={classData.price} refetch={refetch} />
+         </div> 
+      */}
       </section>
     </Layout>
   );

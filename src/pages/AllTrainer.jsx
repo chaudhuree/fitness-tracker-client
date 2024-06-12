@@ -76,7 +76,13 @@ export default function AllTrainer() {
                         scope="col"
                         className="px-12 py-3.5 text-sm md:text-base font-semibold   text-gray-500 dark:text-gray-400"
                       >
-                        Available Time
+                        Classes
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-12 py-3.5 text-sm md:text-base font-semibold   text-gray-500 dark:text-gray-400"
+                      >
+                        Total Bookings
                       </th>
                       <th
                         scope="col"
@@ -103,7 +109,26 @@ export default function AllTrainer() {
                         </td>
                         <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
                           <div className="font-medium text-gray-800 dark:text-white">
-                            {trainer?.availableTimeSlot}
+                            <div class="flex items-center justify-center gap-x-2">
+                              {trainer?.classes?.map((cls, index) => (
+                                <p
+                                  class={`px-3 py-1 text-xs ${
+                                    index === 0
+                                      ? "text-indigo-500 bg-indigo-100/60"
+                                      : index === 1
+                                      ? "text-blue-500 bg-blue-100/60"
+                                      : "text-pink-500 bg-pink-100/60"
+                                  } rounded-full dark:bg-gray-800 `}
+                                >
+                                  {cls?.name}
+                                </p>
+                              ))}
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
+                          <div className="font-medium text-gray-800 dark:text-white">
+                            {trainer?.bookedCount}
                           </div>
                         </td>
                         <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
