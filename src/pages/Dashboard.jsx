@@ -81,7 +81,7 @@ export default function Dashboard() {
             chart goes here
           */}
           <div className="flex flex-col justify-center items-center">
-          
+          <div className="stats shadow">
             <PieChart width={400} height={400}>
               <Pie
                 dataKey="value"
@@ -100,6 +100,7 @@ export default function Dashboard() {
 
               <Tooltip />
             </PieChart>
+            </div>
           </div>
         </div>
         <div className="my-4">

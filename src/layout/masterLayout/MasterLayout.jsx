@@ -23,6 +23,7 @@ import "./dropdownmenu.css";
 import { useAuth } from "../../context/AuthProvider";
 import { CgProfile } from "react-icons/cg";
 import { TbBrandBooking } from "react-icons/tb";
+import { MdManageHistory } from "react-icons/md";
 
 const MasterLayout = ({ children }) => {
   let contentRef,
@@ -135,6 +136,20 @@ const MasterLayout = ({ children }) => {
             My Bookings
           </span>
         </NavLink>
+        <NavLink
+          className={(navData) =>
+            navData.isActive
+              ? "side-bar-item-active side-bar-item mt-2"
+              : "side-bar-item mt-2 "
+          }
+          to="/manageslot"
+        >
+          <MdManageHistory className="side-bar-item-icon inline-block" />
+          <span className="side-bar-item-caption inline-block ml-2">
+            Manage Slots
+          </span>
+        </NavLink>
+        
         <NavLink
           className={(navData) =>
             navData.isActive

@@ -27,6 +27,7 @@ import AllClasses from "./pages/AllClasses";
 import ActiveLog from "./pages/ActiveLog";
 import UserProfile from "./pages/UserProfile";
 import BookedTrainers from "./pages/BookedTrainers";
+import ManageSlot from "./pages/ManageSlot";
 import AdminPrivateRoute from "./protectedroutes/AdminPrivateRoute";
 function App() {
   return (
@@ -67,6 +68,7 @@ function App() {
         <Route path="/addclass" element={<AddClass />} />
         <Route path="/addforum" element={<AddForum />} />
         <Route path="/bookedtrainers" element={<BookedTrainers />} />
+        <Route path="/manageslot" element={<ManageSlot />} />
 
         <Route path="/class/:id" element={<PrivateRoute />}>
           <Route path="/class/:id" element={<ClassItem />} />
