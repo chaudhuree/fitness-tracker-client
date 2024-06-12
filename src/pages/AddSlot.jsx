@@ -280,15 +280,7 @@ export default function AddSlot() {
   const handleClassChange = (selected) => {
     setSelectedClassOptions(selected);
   };
-  // const formattedStartTime =
-  //   value && value[0] ? formatTimeTo12Hour(value[0]) : "";
-  // const formattedEndTime =
-  //   value && value[1] ? formatTimeTo12Hour(value[1]) : "";
-  // let availableTimeSlot = `${formattedStartTime} - ${formattedEndTime}`;
-
-  // const handleChange = (e) => {
-  //   setTrainerData({ ...trainerData, [e.target.name]: e.target.value });
-  // };
+ 
   // form submission function
   const handleApply = async (e) => {
     e.preventDefault();
@@ -314,7 +306,7 @@ export default function AddSlot() {
       </h2>
       <section className="mx-auto">
         <form
-          className="max-w-xl p-6 mx-auto bg-white rounded-md shadow-md"
+          className=" p-6 mx-auto bg-white rounded-md shadow-md"
           onSubmit={handleApply}
         >
           {/* Render loading spinner */}

@@ -9,12 +9,20 @@ import NewsLetter from "../components/NewsLetter"
 import LatestForums from "../components/LatestForums"
 import Teams from "../components/Teams"
 import FeaturedClasses from "../components/FeaturedClasses"
+import TestimonialSlider from "../components/TestimonialSlider"
+import { axiosDefault } from "../hooks/useAxiosHook"
 
+import { useQuery } from "@tanstack/react-query"
 export default function Home() {
+  
   const { checkingStatus} = useAuthStatus()
   if (checkingStatus) {
     return <Spinner />
   }
+
+
+  // console.log('data', data);
+  
   return (
     <Layout>
       <div className=" text-white">
@@ -26,6 +34,10 @@ export default function Home() {
         <LatestForums />
         <Teams />
         <FeaturedClasses />
+       
+         <TestimonialSlider  />
+      
+       
       </div>
     </Layout>
   )
