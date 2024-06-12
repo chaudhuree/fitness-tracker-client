@@ -20,6 +20,9 @@ import AllTrainer from "./pages/AllTrainer";
 import AppliedTrainers from "./pages/AppliedTrainers";
 import AppliedTrainer from "./pages/AppliedTrainer";
 import AddClass from "./pages/AddClass";
+import AddForum from "./pages/AddForum";
+import AllForums from "./pages/AllForums";
+import AllClasses from "./pages/AllClasses";
 import AdminPrivateRoute from "./protectedroutes/AdminPrivateRoute";
 function App() {
   return (
@@ -51,8 +54,11 @@ function App() {
           element={<NewsletterSubscribers />}
         />
         <Route path="/alltrainers" element={<AllTrainer />} />
+        <Route path="/allforums" element={<AllForums />} />
+        <Route path="/allclasses" element={<AllClasses />} />
         <Route path="/appliedtrainers" element={<AppliedTrainers />} />
-          <Route path="/addclass" element={<AddClass />} />
+        <Route path="/addclass" element={<AddClass />} />
+        <Route path="/addforum" element={<AddForum />} />
 
         <Route path="/class/:id" element={<PrivateRoute />}>
           <Route path="/class/:id" element={<ClassItem />} />

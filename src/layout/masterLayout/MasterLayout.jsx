@@ -10,6 +10,9 @@ import {
   AiOutlineLogout,
   AiOutlineMenuUnfold,
   AiOutlineUser,
+  AiOutlineFileAdd,
+  AiOutlineAudit,
+  AiOutlineBlock,
 } from "react-icons/ai";
 import { BsHourglass, BsListNested } from "react-icons/bs";
 // import { MdOutlineCancelPresentation } from "react-icons/md";
@@ -130,6 +133,19 @@ const MasterLayout = ({ children }) => {
             Add Class
           </span>
         </NavLink>
+        <NavLink
+          className={(navData) =>
+            navData.isActive
+              ? "side-bar-item-active side-bar-item mt-2"
+              : "side-bar-item mt-2"
+          }
+          to="/addforum"
+        >
+          <AiOutlineFileAdd className="side-bar-item-icon inline-block" />
+          <span className="side-bar-item-caption inline-block ml-2">
+            Add Forum
+          </span>
+        </NavLink>
 
         <NavLink
           className={(navData) =>
@@ -142,6 +158,33 @@ const MasterLayout = ({ children }) => {
           <BsListNested className="side-bar-item-icon inline-block" />
           <span className="side-bar-item-caption inline-block ml-2">
             Subscribers
+          </span>
+        </NavLink>
+
+        <NavLink
+          className={(navData) =>
+            navData.isActive
+              ? "side-bar-item-active side-bar-item mt-2"
+              : "side-bar-item mt-2"
+          }
+          to="/allforums"
+        >
+          <AiOutlineAudit className="side-bar-item-icon inline-block" />
+          <span className="side-bar-item-caption inline-block ml-2">
+            Forums
+          </span>
+        </NavLink>
+        <NavLink
+          className={(navData) =>
+            navData.isActive
+              ? "side-bar-item-active side-bar-item mt-2"
+              : "side-bar-item mt-2"
+          }
+          to="/allclasses"
+        >
+          <AiOutlineBlock className="side-bar-item-icon inline-block" />
+          <span className="side-bar-item-caption inline-block ml-2">
+            Classes
           </span>
         </NavLink>
 
