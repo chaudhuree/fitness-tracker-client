@@ -51,7 +51,7 @@ export default function ClassItem() {
 
             <div className="flex flex-col  w-full lg:w-1/2 h-full">
               <div className="lg:max-w-lg">
-                <h1 className="text-xl font-semibold tracking-wide text-sky-600 dark:text-white lg:text-xl mb-10">
+                <h1 className="text-lg whitespace-pre-wrap font-semibold tracking-wide text-sky-100 dark:text-white lg:text-xl mb-10">
                   {classData.description}
                 </h1>
                 {/*

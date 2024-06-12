@@ -19,6 +19,7 @@ import NewsletterSubscribers from "./pages/NewsletterSubscribers";
 import AllTrainer from "./pages/AllTrainer";
 import AppliedTrainers from "./pages/AppliedTrainers";
 import AppliedTrainer from "./pages/AppliedTrainer";
+import AddClass from "./pages/AddClass";
 import AdminPrivateRoute from "./protectedroutes/AdminPrivateRoute";
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
         />
         <Route path="/alltrainers" element={<AllTrainer />} />
         <Route path="/appliedtrainers" element={<AppliedTrainers />} />
+          <Route path="/addclass" element={<AddClass />} />
 
         <Route path="/class/:id" element={<PrivateRoute />}>
           <Route path="/class/:id" element={<ClassItem />} />

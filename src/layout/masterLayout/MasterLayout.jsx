@@ -50,7 +50,7 @@ const MasterLayout = ({ children }) => {
   return (
     <Fragment>
       {/*Navbar*/}
-      <nav className="fixed w-full top-0 left-0 z-20 px-0 shadow-sm flex justify-between items-center lg:px-3 !bg-white">
+      <nav className="fixed w-full top-0 left-0 z-20 px-0 shadow-sm flex justify-between items-center lg:px-3 !bg-[#F9FAFB]">
         {/*navbar left*/}
         <div className="flex h-20 items-center gap-4">
           <a className="icon-nav m-0 " onClick={MenuBarClickHandler}>
