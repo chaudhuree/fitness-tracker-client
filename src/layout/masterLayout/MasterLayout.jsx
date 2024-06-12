@@ -196,6 +196,19 @@ const MasterLayout = ({ children }) => {
               ? "side-bar-item-active side-bar-item mt-2"
               : "side-bar-item mt-2"
           }
+          to="/addslot"
+        >
+          <AiOutlineEdit className="side-bar-item-icon inline-block" />
+          <span className="side-bar-item-caption inline-block ml-2">
+            Add Slot
+          </span>
+        </NavLink>
+        <NavLink
+          className={(navData) =>
+            navData.isActive
+              ? "side-bar-item-active side-bar-item mt-2"
+              : "side-bar-item mt-2"
+          }
           to="/addforum"
         >
           <AiOutlineFileAdd className="side-bar-item-icon inline-block" />
