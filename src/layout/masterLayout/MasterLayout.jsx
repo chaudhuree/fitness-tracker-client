@@ -22,6 +22,7 @@ import "./sidebar.css";
 import "./dropdownmenu.css";
 import { useAuth } from "../../context/AuthProvider";
 import { CgProfile } from "react-icons/cg";
+import { TbBrandBooking } from "react-icons/tb";
 
 const MasterLayout = ({ children }) => {
   let contentRef,
@@ -129,9 +130,9 @@ const MasterLayout = ({ children }) => {
           }
           to="/bookedtrainers"
         >
-          <RiDashboardLine className="side-bar-item-icon inline-block" />
+          <TbBrandBooking className="side-bar-item-icon inline-block" />
           <span className="side-bar-item-caption inline-block ml-2">
-            Booked Trainers
+            My Bookings
           </span>
         </NavLink>
         <NavLink
