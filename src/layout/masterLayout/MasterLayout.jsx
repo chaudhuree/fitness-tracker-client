@@ -84,7 +84,7 @@ const MasterLayout = ({ children }) => {
                   alt="user image"
                 />
                 <h6 className="text-xl font-semibold">
-                  {currentUser.displayName}
+                  {currentUser?.displayName}
                 </h6>
                 <hr className="bg-[#a2a2a2] w-full h-[.5px] " />
               </div>
@@ -119,6 +119,19 @@ const MasterLayout = ({ children }) => {
           <RiDashboardLine className="side-bar-item-icon inline-block" />
           <span className="side-bar-item-caption inline-block ml-2">
             Dashboard
+          </span>
+        </NavLink>
+        <NavLink
+          className={(navData) =>
+            navData.isActive
+              ? "side-bar-item-active side-bar-item mt-2"
+              : "side-bar-item mt-2 "
+          }
+          to="/bookedtrainers"
+        >
+          <RiDashboardLine className="side-bar-item-icon inline-block" />
+          <span className="side-bar-item-caption inline-block ml-2">
+            Booked Trainers
           </span>
         </NavLink>
         <NavLink
