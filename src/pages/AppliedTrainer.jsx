@@ -56,6 +56,9 @@ export default function AppliedTrainer() {
   if (isLoading || validateTrainerLoading) return <FullscreenLoader />;
   return (
     <MasterLayout>
+    <h2 className="text-3xl font-bold text-center capitalize dark:text-white mb-4">
+        Applied Trainer
+      </h2>
       <section className="text-[#111317] font-poppins mx-auto ">
         {/*
           template starts here

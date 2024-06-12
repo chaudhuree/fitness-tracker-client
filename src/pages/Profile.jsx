@@ -170,7 +170,7 @@ export default function Profile() {
               <div className="mt-6">
                 <button
                   onClick={onLogout}
-                  className="transition-item w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-ornage rounded-lg hover:bg-orange-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50 w-full"
+                  className="transition-item  px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-ornage rounded-lg hover:bg-orange-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50 w-full"
                 >
                   Log out
                 </button>

@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import ForgotPassword from "./pages/ForgotPassword";
 import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 import Register from "./pages/Register";
@@ -24,12 +25,14 @@ import AddForum from "./pages/AddForum";
 import AllForums from "./pages/AllForums";
 import AllClasses from "./pages/AllClasses";
 import ActiveLog from "./pages/ActiveLog";
+import UserProfile from "./pages/UserProfile";
 import AdminPrivateRoute from "./protectedroutes/AdminPrivateRoute";
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />}/>
         <Route path="/signin" element={<SignIn />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
@@ -55,6 +58,7 @@ function App() {
           element={<NewsletterSubscribers />}
         />
         <Route path="/activelog" element={<ActiveLog />} />
+        <Route path="/userprofile" element={<UserProfile />} />
         <Route path="/alltrainers" element={<AllTrainer />} />
         <Route path="/allforums" element={<AllForums />} />
         <Route path="/allclasses" element={<AllClasses />} />

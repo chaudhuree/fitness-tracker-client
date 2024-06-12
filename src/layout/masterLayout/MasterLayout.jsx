@@ -21,6 +21,7 @@ import { RiDashboardLine } from "react-icons/ri";
 import "./sidebar.css";
 import "./dropdownmenu.css";
 import { useAuth } from "../../context/AuthProvider";
+import { CgProfile } from "react-icons/cg";
 
 const MasterLayout = ({ children }) => {
   let contentRef,
@@ -72,22 +73,22 @@ const MasterLayout = ({ children }) => {
           <div className="user-dropdown">
             <img
               className="icon-nav-img icon-nav"
-              src={userData?.photoURL}
+              src={currentUser?.photoURL}
               alt="user image"
             />
             <div className="user-dropdown-content ">
               <div className="mt-4 text-center flex flex-col justify-center items-center  gap-4">
                 <img
                   className="icon-nav-img"
-                  src={userData?.photoURL}
+                  src={currentUser?.photoURL}
                   alt="user image"
                 />
                 <h6 className="text-xl font-semibold">
-                  {userData.displayName}
+                  {currentUser.displayName}
                 </h6>
                 <hr className="bg-[#a2a2a2] w-full h-[.5px] " />
               </div>
-              <NavLink to="/profile" className="side-bar-item">
+              <NavLink to="/userprofile" className="side-bar-item">
                 <AiOutlineUser className="side-bar-item-icon" />
                 <span className="side-bar-item-caption">Profile</span>
               </NavLink>
@@ -113,7 +114,7 @@ const MasterLayout = ({ children }) => {
               ? "side-bar-item-active side-bar-item mt-2"
               : "side-bar-item mt-2 "
           }
-          to="/"
+          to="/dashboard"
         >
           <RiDashboardLine className="side-bar-item-icon inline-block" />
           <span className="side-bar-item-caption inline-block ml-2">
@@ -133,7 +134,19 @@ const MasterLayout = ({ children }) => {
             Active Log
           </span>
         </NavLink>
-
+        <NavLink
+          className={(navData) =>
+            navData.isActive
+              ? "side-bar-item-active side-bar-item mt-2"
+              : "side-bar-item mt-2 "
+          }
+          to="/userprofile"
+        >
+          <CgProfile className="side-bar-item-icon inline-block" />
+          <span className="side-bar-item-caption inline-block ml-2">
+            User Profile
+          </span>
+        </NavLink>
 
         <NavLink
           className={(navData) =>

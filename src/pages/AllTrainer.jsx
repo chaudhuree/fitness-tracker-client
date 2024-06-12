@@ -51,6 +51,9 @@ export default function AllTrainer() {
   };
   return (
     <MasterLayout>
+    <h2 className="text-3xl font-bold text-center capitalize dark:text-white mb-4">
+        All Trainers
+      </h2>
       <section className="mx-auto">
       <div className="flex flex-col mt-6">
           <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

@@ -14,7 +14,7 @@ export default function TrainerBookingProvider({ children }) {
   });
 
   useEffect(() => {
-    console.log('bookingData', bookingData);
+    // console.log('bookingData', bookingData);
     
   }, [bookingData]);
 
