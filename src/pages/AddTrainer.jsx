@@ -156,10 +156,10 @@ export default function AddTrainer() {
     },
   });
 
-  const classesOption = classesData?.map((item) => ({
+  const classesOption = classesData?.filter((item) => item.trainers.length <=5).map((item) => ({
     value: item._id,
     label: item.name,
-  }));
+  }))
 
   const handleTimeChange = (newValue) => {
     onChange(newValue);

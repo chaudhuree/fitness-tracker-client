@@ -22,11 +22,13 @@ export default function ClassCard({ classItem }) {
         <TrainersAvatar trainers={classItem.trainers}/>
         </div>
        
-         <div className="flex  justify-between mt-4 items-center">
-           <h1 className="text-xs max-xl:hidden font-bold text-gray-300 dark:text-gray-200">
-             {moment(classItem.startDate).format("MMMM/YYYY")}
-           </h1>
-           <button onClick={()=>navigate(`/class/${classItem._id}`)} className="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-sky-600 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">
+         <div className="flex  justify-end mt-4 items-center">
+           {/*
+            <h1 className="text-xs max-xl:hidden font-bold text-gray-300 dark:text-gray-200">
+              {moment(classItem.startDate).format("MMMM/YYYY")}
+            </h1> 
+           */}
+           <button onClick={()=>navigate(`/class/${classItem._id}`)} className="px-2 hidden py-1 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-sky-600 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">
              View Details
            </button>
          </div> 

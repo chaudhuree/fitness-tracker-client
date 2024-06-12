@@ -54,26 +54,30 @@ export default function ClassItem() {
                 <h1 className="text-xl font-semibold tracking-wide text-sky-600 dark:text-white lg:text-xl mb-10">
                   {classData.description}
                 </h1>
-                <p className="my-4 text-white dark:text-gray-300">
-                  <span className="text-ornage mr-2">Class Booking Price :</span>
-                  {classData.price}$
-                </p>
+                {/*
+                 <p className="my-4 text-white dark:text-gray-300">
+                   <span className="text-ornage mr-2">Class Booking Price :</span>
+                   {classData.price}$
+                 </p> 
+                */}
                 <p className="my-4 text-white dark:text-gray-300">
                   <span className="text-ornage mr-2">Total Booked By :</span>
                   {classData.bookingCount}
                 </p>
-                <p className="my-4 text-white dark:text-gray-300">
-                  <span className="text-ornage mr-2">Class Duration :</span>
-                  {classData.duration}
-                </p>
-                <p className="my-4 text-white dark:text-gray-300">
-                  <span className="text-ornage mr-2">Class Started From :</span>
-                  {moment(classData.startDate).format("MMMM Do YYYY")}
-                </p>
-                <p className="my-4 text-white dark:text-gray-300">
-                  <span className="text-ornage mr-2">Class Status :</span>
-                  {classData.status}
-                </p>
+                {/*
+                 <p className="my-4 text-white dark:text-gray-300">
+                   <span className="text-ornage mr-2">Class Duration :</span>
+                   {classData.duration}
+                 </p>
+                 <p className="my-4 text-white dark:text-gray-300">
+                   <span className="text-ornage mr-2">Class Started From :</span>
+                   {moment(classData.startDate).format("MMMM Do YYYY")}
+                 </p>
+                 <p className="my-4 text-white dark:text-gray-300">
+                   <span className="text-ornage mr-2">Class Status :</span>
+                   {classData.status}
+                 </p> 
+                */}
                 <p className="mt-4 flex gap-4 items-center text-white dark:text-gray-300">
                   <span className="text-ornage mr-2">Trainers List :</span>
                   <TrainersAvatar
