@@ -1,4 +1,4 @@
-import React, { Fragment, useRef } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import {
   deleteUserDataFromLocalStorage,
@@ -26,11 +26,18 @@ import { TbBrandBooking } from "react-icons/tb";
 import { MdManageHistory } from "react-icons/md";
 
 const MasterLayout = ({ children }) => {
+  const [role, setRole] = useState("");
   let contentRef,
     sideNavRef = useRef();
   const { logout, currentUser } = useAuth();
   const userData = getUserDataFromLocalStorage();
   // console.log("userData", userData);
+
+  useEffect(() => {
+    if (userData) {
+      setRole(userData.role);
+    }
+  }, [userData]);
 
   const onLogout = () => {
     logout();
@@ -110,113 +117,130 @@ const MasterLayout = ({ children }) => {
         }}
         className="side-nav-open"
       >
-        <NavLink
-          className={(navData) =>
-            navData.isActive
-              ? "side-bar-item-active side-bar-item mt-2"
-              : "side-bar-item mt-2 "
-          }
-          to="/dashboard"
-        >
-          <RiDashboardLine className="side-bar-item-icon inline-block" />
-          <span className="side-bar-item-caption inline-block ml-2">
-            Dashboard
-          </span>
-        </NavLink>
-        <NavLink
-          className={(navData) =>
-            navData.isActive
-              ? "side-bar-item-active side-bar-item mt-2"
-              : "side-bar-item mt-2 "
-          }
-          to="/bookedtrainers"
-        >
-          <TbBrandBooking className="side-bar-item-icon inline-block" />
-          <span className="side-bar-item-caption inline-block ml-2">
-            My Bookings
-          </span>
-        </NavLink>
-        <NavLink
-          className={(navData) =>
-            navData.isActive
-              ? "side-bar-item-active side-bar-item mt-2"
-              : "side-bar-item mt-2 "
-          }
-          to="/manageslot"
-        >
-          <MdManageHistory className="side-bar-item-icon inline-block" />
-          <span className="side-bar-item-caption inline-block ml-2">
-            Manage Slots
-          </span>
-        </NavLink>
-        
-        <NavLink
-          className={(navData) =>
-            navData.isActive
-              ? "side-bar-item-active side-bar-item mt-2"
-              : "side-bar-item mt-2 "
-          }
-          to="/activelog"
-        >
-          <AiOutlineBars className="side-bar-item-icon inline-block" />
-          <span className="side-bar-item-caption inline-block ml-2">
-            Active Log
-          </span>
-        </NavLink>
-        <NavLink
-          className={(navData) =>
-            navData.isActive
-              ? "side-bar-item-active side-bar-item mt-2"
-              : "side-bar-item mt-2 "
-          }
-          to="/userprofile"
-        >
-          <CgProfile className="side-bar-item-icon inline-block" />
-          <span className="side-bar-item-caption inline-block ml-2">
-            User Profile
-          </span>
-        </NavLink>
+        {role === "admin" && (
+          <NavLink
+            className={(navData) =>
+              navData.isActive
+                ? "side-bar-item-active side-bar-item mt-2"
+                : "side-bar-item mt-2 "
+            }
+            to="/dashboard"
+          >
+            <RiDashboardLine className="side-bar-item-icon inline-block" />
+            <span className="side-bar-item-caption inline-block ml-2">
+              Dashboard
+            </span>
+          </NavLink>
+        )}
+        {role === "member" && (
+          <NavLink
+            className={(navData) =>
+              navData.isActive
+                ? "side-bar-item-active side-bar-item mt-2"
+                : "side-bar-item mt-2 "
+            }
+            to="/bookedtrainers"
+          >
+            <TbBrandBooking className="side-bar-item-icon inline-block" />
+            <span className="side-bar-item-caption inline-block ml-2">
+              My Bookings
+            </span>
+          </NavLink>
+        )}
+        {role === "trainer" && (
+          <NavLink
+            className={(navData) =>
+              navData.isActive
+                ? "side-bar-item-active side-bar-item mt-2"
+                : "side-bar-item mt-2 "
+            }
+            to="/manageslot"
+          >
+            <MdManageHistory className="side-bar-item-icon inline-block" />
+            <span className="side-bar-item-caption inline-block ml-2">
+              Manage Slots
+            </span>
+          </NavLink>
+        )}
 
-        <NavLink
-          className={(navData) =>
-            navData.isActive
-              ? "side-bar-item-active side-bar-item mt-2"
-              : "side-bar-item mt-2"
-          }
-          to="/addclass"
-        >
-          <AiOutlineEdit className="side-bar-item-icon inline-block" />
-          <span className="side-bar-item-caption inline-block ml-2">
-            Add Class
-          </span>
-        </NavLink>
-        <NavLink
-          className={(navData) =>
-            navData.isActive
-              ? "side-bar-item-active side-bar-item mt-2"
-              : "side-bar-item mt-2"
-          }
-          to="/addslot"
-        >
-          <AiOutlineEdit className="side-bar-item-icon inline-block" />
-          <span className="side-bar-item-caption inline-block ml-2">
-            Add Slot
-          </span>
-        </NavLink>
-        <NavLink
-          className={(navData) =>
-            navData.isActive
-              ? "side-bar-item-active side-bar-item mt-2"
-              : "side-bar-item mt-2"
-          }
-          to="/addforum"
-        >
-          <AiOutlineFileAdd className="side-bar-item-icon inline-block" />
-          <span className="side-bar-item-caption inline-block ml-2">
-            Add Forum
-          </span>
-        </NavLink>
+        {role === "member" && (
+          <NavLink
+            className={(navData) =>
+              navData.isActive
+                ? "side-bar-item-active side-bar-item mt-2"
+                : "side-bar-item mt-2 "
+            }
+            to="/activelog"
+          >
+            <AiOutlineBars className="side-bar-item-icon inline-block" />
+            <span className="side-bar-item-caption inline-block ml-2">
+              Active Log
+            </span>
+          </NavLink>
+        )}
+        {role === "member" && (
+          <NavLink
+            className={(navData) =>
+              navData.isActive
+                ? "side-bar-item-active side-bar-item mt-2"
+                : "side-bar-item mt-2 "
+            }
+            to="/userprofile"
+          >
+            <CgProfile className="side-bar-item-icon inline-block" />
+            <span className="side-bar-item-caption inline-block ml-2">
+              User Profile
+            </span>
+          </NavLink>
+        )}
 
+        {role === "admin" && (
+          <NavLink
+            className={(navData) =>
+              navData.isActive
+                ? "side-bar-item-active side-bar-item mt-2"
+                : "side-bar-item mt-2"
+            }
+            to="/addclass"
+          >
+            <AiOutlineEdit className="side-bar-item-icon inline-block" />
+            <span className="side-bar-item-caption inline-block ml-2">
+              Add Class
+            </span>
+          </NavLink>
+        )}
+        {role === "trainer" && (
+          <NavLink
+            className={(navData) =>
+              navData.isActive
+                ? "side-bar-item-active side-bar-item mt-2"
+                : "side-bar-item mt-2"
+            }
+            to="/addslot"
+          >
+            <AiOutlineEdit className="side-bar-item-icon inline-block" />
+            <span className="side-bar-item-caption inline-block ml-2">
+              Add Slot
+            </span>
+          </NavLink>
+        )}
+        {(role === "admin" || role === "trainer") && (
+          <NavLink
+            className={(navData) =>
+              navData.isActive
+                ? "side-bar-item-active side-bar-item mt-2"
+                : "side-bar-item mt-2"
+            }
+            to="/addforum"
+          >
+            <AiOutlineFileAdd className="side-bar-item-icon inline-block" />
+            <span className="side-bar-item-caption inline-block ml-2">
+              Add Forum
+            </span>
+          </NavLink>
+        )}
+
+        {role === "admin" && (
         <NavLink
           className={(navData) =>
             navData.isActive
@@ -230,7 +254,9 @@ const MasterLayout = ({ children }) => {
             Subscribers
           </span>
         </NavLink>
+        )}
 
+        {(role === "admin" || role==="trainer") && (
         <NavLink
           className={(navData) =>
             navData.isActive
@@ -244,7 +270,8 @@ const MasterLayout = ({ children }) => {
             Forums
           </span>
         </NavLink>
-        <NavLink
+        )}
+        {role === "admin"  && (<NavLink
           className={(navData) =>
             navData.isActive
               ? "side-bar-item-active side-bar-item mt-2"
@@ -256,8 +283,9 @@ const MasterLayout = ({ children }) => {
           <span className="side-bar-item-caption inline-block ml-2">
             Classes
           </span>
-        </NavLink>
+        </NavLink>)}
 
+        {role === "admin" && (
         <NavLink
           className={(navData) =>
             navData.isActive
@@ -270,9 +298,9 @@ const MasterLayout = ({ children }) => {
           <span className="side-bar-item-caption inline-block ml-2">
             All Trainers
           </span>
-        </NavLink>
+        </NavLink>)}
 
-        <NavLink
+       {role === "admin" && ( <NavLink
           className={(navData) =>
             navData.isActive
               ? "side-bar-item-active side-bar-item mt-2"
@@ -284,7 +312,7 @@ const MasterLayout = ({ children }) => {
           <span className="side-bar-item-caption inline-block ml-2">
             Applied Trainers
           </span>
-        </NavLink>
+        </NavLink>)}
       </div>
 
       {/*Content*/}

@@ -1,11 +1,13 @@
+import React, { useState,useEffect } from "react";
 import { NavLink, useLocation, useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
 import { routeLists } from "../utils";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
-import {deleteUserDataFromLocalStorage} from "../utils";
+import {deleteUserDataFromLocalStorage,getUserDataFromLocalStorage} from "../utils";
 
 export default function Navbar() {
+  const [role, setRole] = useState("");
   const { logout, currentUser } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
@@ -19,6 +21,12 @@ export default function Navbar() {
       return true;
     }
   }
+  useEffect(() => {
+    const userData = getUserDataFromLocalStorage();
+    if(userData){
+      setRole(userData.role);
+    }
+  }, [])
   return (
     <div className="navbar container  mx-auto px-5 md:px-10  py-[18px]  font-poppins ">
       <Tooltip id="avatar" />
@@ -118,7 +126,7 @@ export default function Navbar() {
                   Profile
                 </Link>
                 <Link
-                  to="/dashboard"
+                  to={`${role==="admin" ? "/dashboard" : role==="trainer" ? "/manageslot" : "/bookedtrainers"}`}
                   className={`py-2 px-[13px] bg-primary  rounded-[8px] font-semibold flex items-center justify-center relative navlink_dropdown pb-1`}
                 >
                   Dashboard

@@ -34,7 +34,7 @@ export default function ActiveLog() {
       </h2>
 
       <section className="mx-auto">
-        <div className="flex flex-col mt-6">
+        {activeLog?.length > 0 ? (<div className="flex flex-col mt-6">
           <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
               <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
@@ -77,7 +77,7 @@ export default function ActiveLog() {
                       <td className="px-4 py-4 text-sm font-medium whitespace-nowrap  ">
                         <p
                           className={`px-3 py-2 text-sm rounded-full ${
-                            activeLog.status === "pending"
+                            activeLog?.status === "pending"
                               ? "text-indigo-500   bg-indigo-100/60"
                               : "text-red-500 bg-red-100/60"
                           }`}
@@ -99,7 +99,11 @@ export default function ActiveLog() {
               </div>
             </div>
           </div>
-        </div>
+        </div>) : (
+          <p className="text-center text-xl dark:text-white">
+            No active log found
+          </p>
+        )}
       </section>
     </MasterLayout>
   );

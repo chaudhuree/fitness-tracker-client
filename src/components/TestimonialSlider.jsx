@@ -19,7 +19,6 @@ export default function TestimonialSlider() {
   if (isLoading) {
     return <Spinner />;
   }
-  console.log("data", data);
 
   const settings = {
     dots: true,
