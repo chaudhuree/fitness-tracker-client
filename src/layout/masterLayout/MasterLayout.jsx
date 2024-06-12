@@ -13,6 +13,7 @@ import {
   AiOutlineFileAdd,
   AiOutlineAudit,
   AiOutlineBlock,
+  AiOutlineBars,
 } from "react-icons/ai";
 import { BsHourglass, BsListNested } from "react-icons/bs";
 // import { MdOutlineCancelPresentation } from "react-icons/md";
@@ -119,6 +120,20 @@ const MasterLayout = ({ children }) => {
             Dashboard
           </span>
         </NavLink>
+        <NavLink
+          className={(navData) =>
+            navData.isActive
+              ? "side-bar-item-active side-bar-item mt-2"
+              : "side-bar-item mt-2 "
+          }
+          to="/activelog"
+        >
+          <AiOutlineBars className="side-bar-item-icon inline-block" />
+          <span className="side-bar-item-caption inline-block ml-2">
+            Active Log
+          </span>
+        </NavLink>
+
 
         <NavLink
           className={(navData) =>

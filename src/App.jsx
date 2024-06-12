@@ -23,6 +23,7 @@ import AddClass from "./pages/AddClass";
 import AddForum from "./pages/AddForum";
 import AllForums from "./pages/AllForums";
 import AllClasses from "./pages/AllClasses";
+import ActiveLog from "./pages/ActiveLog";
 import AdminPrivateRoute from "./protectedroutes/AdminPrivateRoute";
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
           path="/newslettersubscribers"
           element={<NewsletterSubscribers />}
         />
+        <Route path="/activelog" element={<ActiveLog />} />
         <Route path="/alltrainers" element={<AllTrainer />} />
         <Route path="/allforums" element={<AllForums />} />
         <Route path="/allclasses" element={<AllClasses />} />
