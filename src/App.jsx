@@ -30,12 +30,17 @@ import BookedTrainers from "./pages/BookedTrainers";
 import ManageSlot from "./pages/ManageSlot";
 import AddSlot from "./pages/AddSlot";
 import AdminPrivateRoute from "./protectedroutes/AdminPrivateRoute";
+import AdminOrTrainerRoute from "./protectedroutes/AdminOrTrainerRoute";
+import TrainerPrivateRoute from "./protectedroutes/TrainerPrivateRoute";
+
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />}/>
+        <Route path="" element={<AdminPrivateRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
         <Route path="/signin" element={<SignIn />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
@@ -49,28 +54,56 @@ function App() {
         <Route ptha="/trainercheckout" element={<PrivateRoute />}>
           <Route path="/trainercheckout" element={<TrainerCheckout />} />
         </Route>
-        <Route
-          path="/trainerbooking/:trainer/:slot"
-          element={<TrainerBooking />}
-        />
+        <Route path="/trainerbooking/:trainer/:slot" element={<PrivateRoute />}>
+          <Route
+            path="/trainerbooking/:trainer/:slot"
+            element={<TrainerBooking />}
+          />
+        </Route>
         <Route path="/classes" element={<Classes />} />
         <Route path="/forums" element={<Forums />} />
+        <Route path="/newslettersubscribers" element={<AdminPrivateRoute />}>
+          <Route
+            path="/newslettersubscribers"
+            element={<NewsletterSubscribers />}
+          />
+        </Route>
+        <Route path="/activelog" element={<PrivateRoute />}>
+          <Route path="/activelog" element={<ActiveLog />} />
+        </Route>
+        <Route path="/userprofile" element={<PrivateRoute />}>
+          <Route path="/userprofile" element={<UserProfile />} />
+        </Route>
 
-        <Route
-          path="/newslettersubscribers"
-          element={<NewsletterSubscribers />}
-        />
-        <Route path="/activelog" element={<ActiveLog />} />
-        <Route path="/userprofile" element={<UserProfile />} />
-        <Route path="/alltrainers" element={<AllTrainer />} />
-        <Route path="/allforums" element={<AllForums />} />
-        <Route path="/allclasses" element={<AllClasses />} />
-        <Route path="/appliedtrainers" element={<AppliedTrainers />} />
-        <Route path="/addclass" element={<AddClass />} />
-        <Route path="/addforum" element={<AddForum />} />
-        <Route path="/bookedtrainers" element={<BookedTrainers />} />
-        <Route path="/manageslot" element={<ManageSlot />} />
-        <Route path="/addslot" element={<AddSlot />} />
+        <Route path="/alltrainers" element={<AdminPrivateRoute />}>
+          <Route path="/alltrainers" element={<AllTrainer />} />
+        </Route>
+        <Route path="/allforums" element={<AdminOrTrainerRoute />}>
+          <Route path="/allforums" element={<AllForums />} />
+        </Route>
+
+        <Route path="/allclasses" element={<AdminPrivateRoute />}>
+          <Route path="/allclasses" element={<AllClasses />} />
+        </Route>
+
+        <Route path="/appliedtrainers" element={<AdminPrivateRoute />}>
+          <Route path="/appliedtrainers" element={<AppliedTrainers />} />
+        </Route>
+        <Route path="/addclass" element={<AdminPrivateRoute />}>
+          <Route path="/addclass" element={<AddClass />} />
+        </Route>
+        <Route path="/addforum" element={<AdminOrTrainerRoute />}>
+          <Route path="/addforum" element={<AddForum />} />
+        </Route>
+        <Route path="/bookedtrainers" element={<PrivateRoute />}>
+          <Route path="/bookedtrainers" element={<BookedTrainers />} />
+        </Route>
+        <Route path="" element={<TrainerPrivateRoute />}>
+          <Route path="/manageslot" element={<ManageSlot />} />
+        </Route>
+        <Route path="" element={<TrainerPrivateRoute />}>
+          <Route path="/addslot" element={<AddSlot />} />
+        </Route>
 
         <Route path="/class/:id" element={<PrivateRoute />}>
           <Route path="/class/:id" element={<ClassItem />} />

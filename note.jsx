@@ -56,6 +56,9 @@ export default function note() {
 
       {/*
         <Route path="" element={<PrivateRoute />}></Route>
+        <Route path="" element={<AdminPrivateRoute />}></Route>
+        <Route path="" element={<TrainerPrivateRoute />}></Route>
+        <Route path="" element={<AdminOrTrainerRoute />}></Route>
       */}
     </div>
   );

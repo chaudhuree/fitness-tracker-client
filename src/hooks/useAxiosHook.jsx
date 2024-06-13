@@ -6,7 +6,7 @@ import {
   getTokenFromLocalStorage,
 } from "../utils";
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000/api/v1",
+  baseURL: "https://fityfits.onrender.com/api/v1",
 });
 
 const useAxiosSecure = () => {
@@ -46,7 +46,7 @@ const useAxiosSecure = () => {
 };
 // default axios function
 export const axiosDefault = axios.create({
-  baseURL: "http://localhost:5000/api/v1",
+  baseURL: "https://fityfits.onrender.com/api/v1",
 });
 
 export default useAxiosSecure;

@@ -109,10 +109,10 @@ export default function AppliedTrainers() {
                         </td>
                         <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
                           <div className="font-medium text-gray-800 dark:text-white">
-                            <div class="flex items-center justify-center gap-x-2">
+                            <div className="flex items-center justify-center gap-x-2">
                               {trainer?.classes?.map((cls, index) => (
                                 <p
-                                  class={`px-3 py-1 text-xs ${
+                                  className={`px-3 py-1 text-xs ${
                                     index === 0
                                       ? "text-indigo-500 bg-indigo-100/60"
                                       : index === 1

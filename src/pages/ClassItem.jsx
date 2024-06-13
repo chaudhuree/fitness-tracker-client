@@ -64,20 +64,7 @@ export default function ClassItem() {
                   <span className="text-ornage mr-2">Total Booked By :</span>
                   {classData.bookingCount}
                 </p>
-                {/*
-                 <p className="my-4 text-white dark:text-gray-300">
-                   <span className="text-ornage mr-2">Class Duration :</span>
-                   {classData.duration}
-                 </p>
-                 <p className="my-4 text-white dark:text-gray-300">
-                   <span className="text-ornage mr-2">Class Started From :</span>
-                   {moment(classData.startDate).format("MMMM Do YYYY")}
-                 </p>
-                 <p className="my-4 text-white dark:text-gray-300">
-                   <span className="text-ornage mr-2">Class Status :</span>
-                   {classData.status}
-                 </p> 
-                */}
+                
                 <p className="mt-4 flex gap-4 items-center text-white dark:text-gray-300">
                   <span className="text-ornage mr-2">Trainers List :</span>
                   <TrainersAvatar
@@ -89,18 +76,7 @@ export default function ClassItem() {
             </div>
           </div>
         </div>
-        {/*
-          class data ends here
-        */}
-        {/*
-          Booking modal starts here
-        */}
-      {/*
-         <div className="grid justify-center my-4 items-center">
-           
-           <ModalItem classId={classData._id} className={classData.name} price={classData.price} refetch={refetch} />
-         </div> 
-      */}
+       
       </section>
     </Layout>
   );

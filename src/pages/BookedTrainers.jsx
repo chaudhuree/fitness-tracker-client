@@ -96,7 +96,7 @@ export default function BookedTrainers() {
                         </td>
                         <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
                           <div className="font-medium text-gray-800 dark:text-white">
-                            <div class="flex items-center justify-center gap-x-2">
+                            <div className="flex items-center justify-center gap-x-2">
                               <span className="capitalize">{trainer?.slotTime.slotName}</span> - {trainer?.slotTime.scheduleTime}
                             </div>
                           </div>

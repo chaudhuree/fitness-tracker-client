@@ -97,7 +97,7 @@ export default function TestimonialSlider() {
                       tabindex="0"
                       role="link"
                     >
-                      John Doe
+                      {d.user.displayName}
                     </p>
                   </div>
                 </div>
