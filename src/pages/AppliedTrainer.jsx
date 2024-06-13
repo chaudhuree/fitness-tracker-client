@@ -10,6 +10,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { axiosDefault } from "../hooks/useAxiosHook";
 import toast from "react-hot-toast";
 import ValidateTrainerModal from "../components/ValidateTrainerModal";
+import { Helmet } from "react-helmet";
 export default function AppliedTrainer() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -56,6 +57,9 @@ export default function AppliedTrainer() {
   if (isLoading || validateTrainerLoading) return <FullscreenLoader />;
   return (
     <MasterLayout>
+      <Helmet>
+        <title>Applied Trainer</title>
+      </Helmet>
     <h2 className="text-3xl font-bold text-center capitalize dark:text-white mb-4">
         Applied Trainer
       </h2>

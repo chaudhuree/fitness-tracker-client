@@ -17,10 +17,10 @@ const AdminOrTrainerRoute = () => {
       }
     })
     .catch((err) => {
-      // console.log("err", err);
-      toast.error("something went wrong, please login again");
+      console.log("err", err);
+      !isAuthorized && toast.error("You are not authorized to view this page");
     });
-  const isAuthorized = getUserDataFromLocalStorage().role === "admin"||getUserDataFromLocalStorage().role === "trainer";
+  const isAuthorized = getUserDataFromLocalStorage()?.role === "admin"||getUserDataFromLocalStorage()?.role === "trainer";
   if (checkingStatus) {
     return <Spinner />;
   }

@@ -19,7 +19,7 @@ const AdminPrivateRoute = () => {
     .catch((err) => {
       toast.dismiss();
       // console.log("err", err);
-      toast.error("something went wrong, please login again");
+      toast.error("You are not authorized to view this page");
     });
   const isAdmin = getUserDataFromLocalStorage()?.role === "admin";
   if (checkingStatus) {

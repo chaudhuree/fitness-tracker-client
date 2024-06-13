@@ -8,6 +8,7 @@ import { Link, useParams,useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { axiosDefault } from "../hooks/useAxiosHook";
 import Layout from "../layout/Layout";
+import { Helmet } from "react-helmet";
 
 export default function Trainer() {
   const { id } = useParams();
@@ -28,6 +29,9 @@ export default function Trainer() {
   if (isLoading) return <Spinner />;
   return (
     <Layout>
+      <Helmet>
+        <title>{trainer.name}</title>
+      </Helmet>
       <section className="text-white font-poppins relative px-2 lg:px-6 py-5 lg:py-10 mx-auto ">
         <span className="bg__blur bottom__blur"></span>
         <div className=" px-6 py-10 mx-auto">

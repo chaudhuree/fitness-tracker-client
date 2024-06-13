@@ -4,6 +4,7 @@ import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import useAxiosSecure from "../hooks/useAxiosHook";
 import moment from "moment";
 import { PieChart, Pie, Legend, Tooltip, Cell } from "recharts";
+import { Helmet } from "react-helmet";
 
 export default function Dashboard() {
   const axiosSecure = useAxiosSecure();
@@ -66,6 +67,9 @@ export default function Dashboard() {
   const COLORS = ['#8884d8', '#82ca9d'];
   return (
     <MasterLayout>
+      <Helmet>
+        <title>Dashboard</title>
+      </Helmet>
       <h2 className="text-3xl font-bold text-center capitalize dark:text-white mb-4">
         Dashboard
       </h2>

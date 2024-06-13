@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { axiosDefault } from "../hooks/useAxiosHook";
 import Spinner from "../components/Spinner";
 import ForumCard from "../components/ForumCard";
+import { Helmet } from "react-helmet";
 export default function Forums() {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(6);
@@ -30,6 +31,9 @@ export default function Forums() {
   };
   return (
     <Layout>
+      <Helmet>
+        <title>Forums</title>
+      </Helmet>
       <section className="text-white font-poppins relative px-2 lg:px-6 py-5 lg:py-10 mx-auto ">
         <span className="bg__blur right-0"></span>
         <div className=" px-6 py-5 pb-10 mx-auto">

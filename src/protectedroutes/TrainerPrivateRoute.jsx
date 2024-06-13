@@ -19,7 +19,7 @@ const TrainerPrivateRoute = () => {
     .catch((err) => {
       // console.log("err", err);
       toast.dismiss();
-      toast.error("something went wrong, please login again");
+      toast.error("You are not authorized to view this page");
     });
   const isTrainer = getUserDataFromLocalStorage()?.role === "trainer";
   if (checkingStatus) {

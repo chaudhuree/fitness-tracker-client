@@ -7,6 +7,7 @@ import {  RiDeleteBin2Fill } from "react-icons/ri"
 import toast from "react-hot-toast"
 import ReviewGivingModal from "../components/ReviewGivingModal"
 import { getUserDataFromLocalStorage } from "../utils"
+import { Helmet } from "react-helmet"
 export default function BookedTrainers() {
   const [page, setPage] = useState(1)
   const [limit, setLimit] = useState(10)
@@ -35,6 +36,9 @@ export default function BookedTrainers() {
   };
   return (
     <MasterLayout>
+    <Helmet>
+      <title>Booked Trainers</title>
+      </Helmet>
     <h2 className="text-3xl font-bold text-center capitalize dark:text-white mb-4">
         All Trainers
       </h2>

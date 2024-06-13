@@ -8,6 +8,7 @@ import TimeRangePicker from "@wojtekmaj/react-timerange-picker";
 import "@wojtekmaj/react-timerange-picker/dist/TimeRangePicker.css";
 import "react-clock/dist/Clock.css";
 import Select from "react-select";
+import { Helmet } from "react-helmet";
 import makeAnimated from "react-select/animated";
 const animatedComponents = makeAnimated();
 import Spinner from "../components/Spinner";
@@ -257,6 +258,9 @@ export default function AddTrainer() {
   if (isLoading) return <Spinner />;
   return (
     <Layout>
+    <Helmet>
+      <title>Be A Trainer</title>
+    </Helmet>
       <section className="text-white font-poppins relative px-2 lg:px-6 py-5 lg:py-10 mx-auto ">
         <span className="bg__blur left-[60%]"></span>
         <div className=" px-6 py-10 mx-auto">

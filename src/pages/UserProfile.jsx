@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import { useAuthStatus } from "../hooks/useAuthStatus";
 import { useAuth } from "../context/AuthProvider";
 import moment from "moment";
+import { Helmet } from "react-helmet";
 
 export default function UserProfile() {
   const auth = getAuth();
@@ -82,6 +83,9 @@ export default function UserProfile() {
 
   return (
     <MasterLayout>
+    <Helmet>
+      <title>Profile</title>
+    </Helmet>
       <h2 className="text-3xl font-bold text-center capitalize dark:text-white mb-4">
         User Profile
       </h2>

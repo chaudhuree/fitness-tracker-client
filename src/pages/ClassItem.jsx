@@ -7,6 +7,7 @@ import { useAuthStatus } from "../hooks/useAuthStatus";
 import TrainersAvatar from "../components/TrainersAvatar";
 import ModalItem from "../components/Modal";
 import moment from "moment/moment";
+import { Helmet } from "react-helmet";
 
 export default function ClassItem() {
   const { id } = useParams();
@@ -25,6 +26,9 @@ export default function ClassItem() {
   }
   return (
     <Layout>
+      <Helmet>
+        <title>{classData.name}</title>
+      </Helmet>
       <section className="text-white font-poppins py-5 lg:py-10 mx-auto relative">
         <span className="bg__blur"></span>
         <span className="bg__blur bottom__blur__two"></span>

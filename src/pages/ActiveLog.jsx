@@ -9,6 +9,7 @@ import moment from "moment";
 import { getUserDataFromLocalStorage } from "../utils";
 import { AiOutlineEye } from "react-icons/ai";
 import RejectedDataViewModal from "../components/RejectedDataViewModal";
+import { Helmet } from "react-helmet";
 
 export default function ActiveLog() {
   const queryClient = useQueryClient();
@@ -29,6 +30,9 @@ export default function ActiveLog() {
 
   return (
     <MasterLayout>
+      <Helmet>
+        <title>Active Log</title>
+      </Helmet>
       <h2 className="text-3xl font-bold text-center capitalize dark:text-white mb-4">
         Active Log
       </h2>

@@ -1,4 +1,5 @@
 import MasterLayout from "../layout/masterLayout/MasterLayout";
+import { Helmet } from "react-helmet";
 import FullscreenLoader from "../layout/fullscreenLoader/FullscreenLoader";
 import toast from "react-hot-toast";
 import {  useMutation, useQueryClient } from "@tanstack/react-query";
@@ -54,6 +55,9 @@ export default function AddForum() {
     <>
       {isLoading && <FullscreenLoader />}
       <MasterLayout>
+        <Helmet>
+          <title>Add Forum</title>
+        </Helmet>
         <h2 className="text-3xl font-bold text-center capitalize dark:text-white mb-4">
           Add New Forum
         </h2>

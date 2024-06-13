@@ -5,6 +5,7 @@ import { getUserDataFromLocalStorage } from "../utils";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useAxiosSecure from "../hooks/useAxiosHook";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 export default function TrainerCheckout() {
   const { bookingData, setBookingData } = useTrainerBooking();
   const navigate = useNavigate();
@@ -54,6 +55,9 @@ export default function TrainerCheckout() {
     
   return (
     <Layout>
+      <Helmet>
+        <title>Checkout</title>
+      </Helmet>
       <section className="text-white font-poppins relative px-2 lg:px-6 py-5 lg:py-10 mx-auto ">
         <span className="bg__blur right-0"></span>
         <div className=" px-6 py-10 mx-auto">

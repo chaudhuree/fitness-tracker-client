@@ -40,8 +40,8 @@ export default function Teams() {
               <p className="text-orange-200 text-sm">
                 {shuffleArray(trainer.areaOfExpertise)
                   .slice(0, 1)
-                  .map((item) => (
-                    <span className="text-amber-500">{item}</span>
+                  .map((item,index) => (
+                    <span key={index} className="text-amber-500">{item}</span>
                   ))}/trainer
               </p>
               <ul className="flex justify-center mt-4 space-x-4">

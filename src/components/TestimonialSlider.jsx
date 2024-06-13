@@ -94,7 +94,7 @@ export default function TestimonialSlider() {
                     <p
                      
                       className="text-lg font-medium text-orange-300 dark:text-blue-300"
-                      tabindex="0"
+                      tabIndex="0"
                       role="link"
                     >
                       {d.user.displayName}

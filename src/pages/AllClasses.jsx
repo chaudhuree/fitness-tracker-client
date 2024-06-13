@@ -5,6 +5,7 @@ import useAxiosSecure from "../hooks/useAxiosHook"
 import { useState } from "react"
 import {  RiDeleteBin2Fill } from "react-icons/ri"
 import toast from "react-hot-toast"
+import { Helmet } from "react-helmet"
 // import {getUserDataFromLocalStorage} from "../utils"
 export default function AllClasses() {
   const [page, setPage] = useState(1)
@@ -65,6 +66,9 @@ export default function AllClasses() {
   };
   return (
     <MasterLayout>
+    <Helmet>
+      <title>All Classes</title>
+    </Helmet>
       <section className="mx-auto">
       <h2 className="text-3xl font-bold text-center capitalize dark:text-white mb-4">
         All Classes

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 export default function NotFound() {
@@ -8,6 +9,9 @@ export default function NotFound() {
 
   return (
     <div className="relative">
+    <Helmet>
+      <title>Not Found</title>
+    </Helmet>
     <span className="bg__blur"></span>
     <span className="bg__blur bottom__blur"></span>
     <div className="min-h-screen  w-full flex flex-col justify-center items-center  ">

@@ -79,7 +79,7 @@ export default function Profile() {
   return (
     <div className="relative">
       <Helmet>
-        <title>Sign In</title>
+        <title>Profile</title>
       </Helmet>
       <span className="bg__blur"></span>
       <span className="bg__blur left-[90%] "></span>

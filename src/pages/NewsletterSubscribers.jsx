@@ -3,6 +3,7 @@ import MasterLayout from "../layout/masterLayout/MasterLayout";
 import FullscreenLoader from "../layout/fullscreenLoader/FullscreenLoader";
 import { useQuery } from "@tanstack/react-query";
 import { axiosDefault } from "../hooks/useAxiosHook";
+import { Helmet } from "react-helmet";
 export default function NewsletterSubscribers() {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
@@ -29,6 +30,9 @@ export default function NewsletterSubscribers() {
 
   return (
     <MasterLayout>
+      <Helmet>
+        <title>Newsletter Subscribers</title>
+      </Helmet>
       <h2 className="text-3xl font-bold text-center capitalize dark:text-white mb-4">
         Newsletter Subscribers
       </h2>

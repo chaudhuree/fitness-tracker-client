@@ -5,6 +5,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import useAxiosSecure from "../hooks/useAxiosHook";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 const animatedComponents = makeAnimated();
@@ -82,6 +83,9 @@ export default function AddClass() {
     <>
       {isLoading && <FullscreenLoader />}
       <MasterLayout>
+        <Helmet>
+          <title>Add Class</title>
+        </Helmet>
         <h2 className="text-3xl font-bold text-center capitalize dark:text-white mb-4">
           Add New Class
         </h2>

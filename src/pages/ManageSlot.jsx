@@ -6,6 +6,7 @@ import moment from "moment"
 import toast from "react-hot-toast"
 import { getUserDataFromLocalStorage } from "../utils"
 import AppliedUserShowModal from "../components/AppliedUserShowModal"
+import { Helmet } from "react-helmet"
 
 export default function ManageSlot() {
   const axiosSecure = useAxiosSecure()
@@ -65,6 +66,9 @@ export default function ManageSlot() {
   }
   return (
     <MasterLayout>
+    <Helmet>
+      <title>Manage Slot</title>
+    </Helmet>
     <h2 className="text-3xl font-bold text-center capitalize dark:text-white mb-4">
         Manage Slot
       </h2>

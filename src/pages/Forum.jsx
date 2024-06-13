@@ -10,6 +10,7 @@ import {
   RiArrowDownCircleFill,
 } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import moment from "moment";
 import { useParams } from "react-router-dom";
 import Spinner from "../components/Spinner";
@@ -47,6 +48,9 @@ export default function Forum() {
   if (isLoading) return <Spinner />;
   return (
     <Layout>
+      <Helmet>
+        <title>{forum.title}</title>
+      </Helmet>
       <section className="text-white font-poppins relative px-2 lg:px-6 py-5 lg:py-10 mx-auto ">
         <span className="bg__blur right-0"></span>
         <div className=" px-6 py-5 pb-10 mx-auto">

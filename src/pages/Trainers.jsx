@@ -8,6 +8,7 @@ import {
   RiInstagramFill,
 } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 export default function Trainers() {
   const {
     isLoading,
@@ -27,6 +28,9 @@ export default function Trainers() {
   if (isLoading) return <Spinner />;
   return (
     <Layout>
+      <Helmet>
+        <title>Trainers</title>
+      </Helmet>
       <section className="text-white font-poppins py-5 lg:py-10 mx-auto">
         <div className=" px-2 lg:px-6 py-5 ">
           <h1 className="text-2xl lg:text-4xl font-bold mb-2 md:mb-4 lg:mb-6 text-center">

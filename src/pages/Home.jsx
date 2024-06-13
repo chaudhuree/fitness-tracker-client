@@ -13,6 +13,7 @@ import TestimonialSlider from "../components/TestimonialSlider"
 import { axiosDefault } from "../hooks/useAxiosHook"
 
 import { useQuery } from "@tanstack/react-query"
+import { Helmet } from "react-helmet"
 export default function Home() {
   
   const { checkingStatus} = useAuthStatus()
@@ -25,6 +26,9 @@ export default function Home() {
   
   return (
     <Layout>
+    <Helmet>
+      <title>FityFits</title>
+    </Helmet>
       <div className=" text-white">
         <Banner />
         <Features />

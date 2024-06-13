@@ -13,6 +13,7 @@ const animatedComponents = makeAnimated();
 import toast from "react-hot-toast";
 import FullscreenLoader from "../layout/fullscreenLoader/FullscreenLoader";
 import moment from "moment";
+import { Helmet } from "react-helmet";
 
 // react time picker related code
 function formatTimeTo12Hour(time) {
@@ -301,6 +302,9 @@ export default function AddSlot() {
 
   return (
     <MasterLayout>
+      <Helmet>
+        <title>Update Trainer Profile</title>
+      </Helmet>
       <h2 className="text-3xl font-bold text-center capitalize dark:text-white mb-4">
         Update Trainer Profile
       </h2>

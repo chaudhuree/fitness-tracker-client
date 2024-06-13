@@ -8,6 +8,7 @@ import { useAuthStatus } from "../hooks/useAuthStatus";
 import { useTrainerBooking } from "../context/TrainerBookingContext";
 import toast from "react-hot-toast";
 import Select from "react-select";
+import { Helmet } from "react-helmet";
 export default function TrainerBooking() {
   const [selectedClass, setSelectedClass] = useState(null);
   const { checkingStatus } = useAuthStatus();
@@ -52,6 +53,9 @@ export default function TrainerBooking() {
   if (checkingStatus || isLoading) return <Spinner />;
   return (
     <Layout>
+    <Helmet>
+      <title>Book - {trainerData.name}</title>
+    </Helmet>
       <div className="font-poppins text-white relative px-2 lg:px-6 py-5 lg:py-10 mx-auto">
         <span className="bg__blur__bottom"></span>
         <span className="bg__blur"></span>
