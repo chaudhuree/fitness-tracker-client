@@ -18,13 +18,14 @@ const TrainerPrivateRoute = () => {
     })
     .catch((err) => {
       // console.log("err", err);
+      toast.dismiss();
       toast.error("something went wrong, please login again");
     });
-  const isAdmin = getUserDataFromLocalStorage().role === "trainer";
+  const isTrainer = getUserDataFromLocalStorage()?.role === "trainer";
   if (checkingStatus) {
     return <Spinner />;
   }
-  return loggedIn && isAdmin ? (
+  return loggedIn && isTrainer ? (
     <Outlet />
   ) : (
     <Navigate state={location.pathname} to="/signin" replace={true} />

@@ -17,10 +17,11 @@ const AdminPrivateRoute = () => {
       }
     })
     .catch((err) => {
+      toast.dismiss();
       // console.log("err", err);
       toast.error("something went wrong, please login again");
     });
-  const isAdmin = getUserDataFromLocalStorage().role === "admin";
+  const isAdmin = getUserDataFromLocalStorage()?.role === "admin";
   if (checkingStatus) {
     return <Spinner />;
   }
