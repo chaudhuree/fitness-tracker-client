@@ -1,5 +1,8 @@
 ## Name of the website: FityFits
 ## Live site: [FityFits](https://fityfits.netlify.app)
+---
+## Admin credentials:  email : test@gmail.com password : 1111aA
+---
 
 ## This is a Fitness Trainer Hiring Website.
 
