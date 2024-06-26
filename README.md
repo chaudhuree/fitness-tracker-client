@@ -1,5 +1,5 @@
 ## Name of the website: FityFits
-## Live site: [Travel](https://fityfits.netlify.app)
+## Live site: [FityFits](https://fityfits.netlify.app)
 
 ## This is a Fitness Trainer Hiring Website.
 
