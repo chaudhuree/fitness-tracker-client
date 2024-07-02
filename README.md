@@ -14,7 +14,8 @@
 - This website has a beautiful user interface with secured authentication system.
 - In this website it also has forum section. Their trainer or admin can post thier knowledge and other users can vote the post like quora.
 
-## Technologies that have been used to build this project: React js | Express js | Mongodb | Tailwind CSS
+### Technologies that have been used to build this project: 
+React js | Express js | Mongodb | Tailwind CSS
 
 ---
 
