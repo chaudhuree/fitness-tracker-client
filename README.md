@@ -14,6 +14,10 @@
 - This website has a beautiful user interface with secured authentication system.
 - In this website it also has forum section. Their trainer or admin can post thier knowledge and other users can vote the post like quora.
 
+## Technologies that have been used to build this project: React js | Express js | Mongodb | Tailwind CSS
+
+---
+
 ### To run the project locally run this command
 
 > you need to install node js in your machine. you can download and install node js from their official website.
